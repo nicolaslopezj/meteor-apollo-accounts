@@ -1,0 +1,12 @@
+{
+  "name": "meteor-apollo-accounts",
+  "version": "0.0.1",
+  "description": "Meteor accounts in GraphQL",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/nicolaslopezj/meteor-apollo-accounts",
+    "type": "git"
+  },
+  "author": "nicolaslopezj",
+  "license": "MIT"
+}
