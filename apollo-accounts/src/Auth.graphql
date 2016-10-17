@@ -1,0 +1,20 @@
+# Type returned when the user logs in
+type LoginMethodResponse {
+  # Id of the user
+  id: String!
+  # Token of the connection
+  token: String!
+  # Expiration date for the token
+  tokenExpires: Date!
+}
+
+type SuccessResponse {
+  # True if it succed
+  success: Boolean
+}
+
+# A hashsed password
+input HashedPassword {
+  digest: String!
+  algorithm: String!
+}

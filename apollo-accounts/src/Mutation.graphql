@@ -1,0 +1,6 @@
+# Meteor login
+login(methodArguments: JSON): LoginMethodResponse
+# Meteor login
+logout(token: String!): SuccessResponse
+# Change user password
+changePassword(oldPassword: HashedPassword!, newPassword: HashedPassword!): SuccessResponse
