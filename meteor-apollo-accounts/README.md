@@ -1,1 +1,1 @@
-# meteor-apollo-accounts
+# Meteor Apollo Accounts
