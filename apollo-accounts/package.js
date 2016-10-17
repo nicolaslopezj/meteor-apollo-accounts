@@ -24,5 +24,4 @@ Package.onTest(function (api) {
   api.use('ecmascript')
   api.use('tinytest')
   api.use('nicolaslopezj:apollo-accounts')
-  api.mainModule('apollo-accounts-tests.js')
 })
