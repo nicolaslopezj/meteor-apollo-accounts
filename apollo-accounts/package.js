@@ -16,7 +16,7 @@ Package.onUse(function (api) {
   api.use('accounts-base')
   api.use('npm-bcrypt')
   api.use('ecmascript')
-  api.use('orionsoft:graphql-compiler')
+  api.use('orionsoft:graphql-compiler@0.0.1')
   api.mainModule('src/index.js')
 })
 
