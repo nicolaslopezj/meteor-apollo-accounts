@@ -1,6 +1,6 @@
 {
   "name": "meteor-apollo-accounts",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Meteor accounts in GraphQL",
   "main": "client/index.js",
   "repository": {

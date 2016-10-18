@@ -9,7 +9,7 @@ type LoginMethodResponse {
 }
 
 type SuccessResponse {
-  # True if it succed
+  # True if it succeeded
   success: Boolean
 }
 

@@ -1,7 +1,7 @@
 import hashPassword from './hashPassword'
 import gql from 'graphql-tag'
 
-export default async function (oldPassword, newPassword, apollo) {
+export default async function ({oldPassword, newPassword}, apollo) {
   if (!oldPassword || !newPassword) throw new Error('Old and new password are required')
 
   const result = await apollo.mutate({
@@ -17,6 +17,5 @@ export default async function (oldPassword, newPassword, apollo) {
   })
 
   const {success} = result.data.changePassword
-  console.log(success ? 'Password changed' : 'Error changing password')
   return success
 }

@@ -16,6 +16,5 @@ export default async function (apollo) {
   })
 
   resetStore()
-  console.log(result.data.logout.success ? 'Logged out' : 'Error loggin out')
   return result.data.logout.success
 }
