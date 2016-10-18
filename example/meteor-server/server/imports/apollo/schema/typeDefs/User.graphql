@@ -1,0 +1,14 @@
+type User {
+  _id: ID
+  emails: [Email]
+  profile: UserProfile
+}
+
+type Email {
+  address: String
+  verified: Boolean
+}
+
+type UserProfile {
+  name: String
+}

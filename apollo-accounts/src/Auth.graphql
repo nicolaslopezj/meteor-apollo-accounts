@@ -5,7 +5,7 @@ type LoginMethodResponse {
   # Token of the connection
   token: String!
   # Expiration date for the token
-  tokenExpires: Date!
+  tokenExpires: Float!
 }
 
 type SuccessResponse {

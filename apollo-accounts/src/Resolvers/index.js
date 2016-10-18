@@ -7,7 +7,7 @@ import resendVerificationEmail from './resendVerificationEmail'
 import forgotPassword from './forgotPassword'
 import resetPassword from './resetPassword'
 
-export {
+export default {
   loginWithPassword,
   logout,
   changePassword,

@@ -12,32 +12,6 @@ It's compatible with Meteor default accounts and you can use both at the same ti
 meteor add nicolaslopezj:apollo-accounts
 ```
 
-Load auth resolvers into your Mutation resolver
-
-```js
-import {Resolvers as Auth} from 'meteor/nicolaslopezj:apollo-accounts'
-
-export default {
-  Mutation: {
-    ...Auth
-  }
-}
-```
-
-Load auth types into your resolvers
-
-```js
-import {Types as Auth} from 'meteor/nicolaslopezj:apollo-accounts'
-import Query from './Query'
-import Mutation from './Mutation'
-
-export default [
-  Auth,
-  Query,
-  Mutation
-]
-```
-
 ### Install on your apollo app (may or may not be the same app)
 
 ```sh
