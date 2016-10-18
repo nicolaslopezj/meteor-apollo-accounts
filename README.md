@@ -46,7 +46,7 @@ npm install meteor-apollo-accounts
 
 # Methods
 
-Meteor accounts methods, client side only.
+Meteor accounts methods, client side only. All methods are promises.
 
 #### loginWithPassword
 
