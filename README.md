@@ -6,7 +6,21 @@ It's compatible with Meteor default accounts and you can use both at the same ti
 
 # Installing
 
+### Install on Meteor server
+
+```sh
+meteor add nicolaslopezj:apollo-accounts
+```
+
+### Install on your apollo app (may or may not be the same app)
+
+```sh
+npm install meteor-apollo-accounts
+```
+
 # Methods
+
+Meteor accounts methods, client side only.
 
 #### loginWithPassword
 
