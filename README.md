@@ -44,7 +44,7 @@ changePassword({oldPassword, newPassword}, apollo)
 
 #### logout
 
-# Log the user out.
+Log the user out.
 
 ```js
 import logout from 'meteor-apollo-accounts/client/logout'
