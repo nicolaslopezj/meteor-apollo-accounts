@@ -65,7 +65,7 @@ Meteor accounts methods, client side only. All methods are promises.
 Log the user in with a password.
 
 ```js
-import loginWithPassword from 'meteor-apollo-accounts/client/loginWithPassword'
+import { loginWithPassword } from 'meteor-apollo-accounts'
 
 loginWithPassword({username, email, password}, apollo)
 ```
@@ -83,7 +83,7 @@ loginWithPassword({username, email, password}, apollo)
 Change the current user's password. Must be logged in.
 
 ```js
-import changePassword from 'meteor-apollo-accounts/client/changePassword'
+import { changePassword } from 'meteor-apollo-accounts'
 
 changePassword({oldPassword, newPassword}, apollo)
 ```
@@ -99,7 +99,7 @@ changePassword({oldPassword, newPassword}, apollo)
 Log the user out.
 
 ```js
-import logout from 'meteor-apollo-accounts/client/logout'
+import { logout } from 'meteor-apollo-accounts'
 
 logout(apollo)
 ```
@@ -111,7 +111,7 @@ logout(apollo)
 Create a new user.
 
 ```js
-import createUser from 'meteor-apollo-accounts/client/createUser'
+import { createUser } from 'meteor-apollo-accounts'
 
 createUser({username, email, password}, apollo)
 ```
@@ -129,7 +129,7 @@ createUser({username, email, password}, apollo)
 Marks the user's email address as verified. Logs the user in afterwards.
 
 ```js
-import verifyEmail from 'meteor-apollo-accounts/client/verifyEmail'
+import { verifyEmail } from 'meteor-apollo-accounts'
 
 verifyEmail({token}, apollo)
 ```
@@ -144,7 +144,7 @@ verifyEmail({token}, apollo)
 Request a forgot password email.
 
 ```js
-import forgotPassword from 'meteor-apollo-accounts/client/forgotPassword'
+import { forgotPassword } from 'meteor-apollo-accounts'
 
 forgotPassword({email}, apollo)
 ```
@@ -158,7 +158,7 @@ forgotPassword({email}, apollo)
 Reset the password for a user using a token received in email. Logs the user in afterwards.
 
 ```js
-import resetPassword from 'meteor-apollo-accounts/client/resetPassword'
+import { resetPassword } from 'meteor-apollo-accounts'
 
 resetPassword({newPassword, token}, apollo)
 ```
