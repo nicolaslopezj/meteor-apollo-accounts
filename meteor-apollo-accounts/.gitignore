@@ -1,6 +1,5 @@
 # compiled files
 /client/
-/server/
 
 # dependencies
 node_modules

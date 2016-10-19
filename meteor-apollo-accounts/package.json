@@ -1,8 +1,8 @@
 {
   "name": "meteor-apollo-accounts",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "Meteor accounts in GraphQL",
-  "main": "client/index.js",
+  "main": "./client",
   "repository": {
     "url": "https://github.com/nicolaslopezj/meteor-apollo-accounts",
     "type": "git"
@@ -42,11 +42,21 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/lib"
+      "/client/"
     ]
   },
   "dependencies": {
     "babel-eslint": "^7.0.0",
-    "uglify-js": "^2.7.3"
+    "uglify-js": "^2.7.3",
+    "underscore": "^1.8.3"
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "xit",
+      "expect",
+      "test",
+      "jest"
+    ]
   }
 }
