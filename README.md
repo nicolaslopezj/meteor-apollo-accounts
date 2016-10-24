@@ -4,6 +4,10 @@ A implementation of Meteor Accounts only in GraphQL with Apollo.
 
 It's compatible with Meteor default accounts and you can use both at the same time.
 
+## Examples
+
+- [janikvonrotz/meteor-apollo-accounts-example](https://github.com/janikvonrotz/meteor-apollo-accounts-example): Meteor client and server side.
+
 # Installing
 
 ### Install on Meteor server
