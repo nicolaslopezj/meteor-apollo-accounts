@@ -25,7 +25,7 @@ html-tools@1.0.11
 htmljs@1.0.11
 id-map@1.0.8
 jquery@1.11.9
-local-test:nicolaslopezj:apollo-accounts@1.0.2
+local-test:nicolaslopezj:apollo-accounts@1.1.0
 localstorage@1.0.11
 logging@1.1.15_1
 meteor@1.2.17_1
@@ -34,7 +34,7 @@ modules@0.7.6_1
 modules-runtime@0.7.6_1
 mongo@1.1.12_3
 mongo-id@1.0.5
-nicolaslopezj:apollo-accounts@1.0.2
+nicolaslopezj:apollo-accounts@1.1.0
 npm-bcrypt@0.9.1_1
 npm-mongo@1.5.50
 observe-sequence@1.0.13
