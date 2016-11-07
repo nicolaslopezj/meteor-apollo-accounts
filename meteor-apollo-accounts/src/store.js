@@ -1,6 +1,6 @@
 const tokenDidChange = function () {
   // Looking for a better way to refetch all queries
-  window.location.reload(0)
+  // window.location.reload(0)
 }
 
 export const storeLoginToken = function (userId, token, tokenExpires) {
