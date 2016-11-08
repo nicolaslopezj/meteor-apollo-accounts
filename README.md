@@ -174,3 +174,48 @@ resetPassword({newPassword, token}, apollo)
 - ```token```: The token retrieved from the reset password URL.
 
 - ```apollo```: Apollo client instance.
+
+
+#### loginWithFacebook
+
+Logins the user with a facebook accessToken
+
+```js
+import { loginWithFacebook } from 'meteor-apollo-accounts'
+
+loginWithFacebook({accessToken}, apollo)
+```
+
+- ```accessToken```: A Facebook accessToken. It's recommended to use
+https://github.com/keppelen/react-facebook-login to fetch the accessToken.
+
+- ```apollo```: Apollo client instance.
+
+#### loginWithGoogle
+
+Logins the user with a google accessToken
+
+```js
+import { loginWithGoogle } from 'meteor-apollo-accounts'
+
+loginWithGoogle({accessToken}, apollo)
+```
+
+- ```accessToken```: A Google accessToken. It's recommended to use
+https://github.com/anthonyjgrove/react-google-login to fetch the accessToken.
+
+- ```apollo```: Apollo client instance.
+
+
+#### onTokenChange
+
+Register a function to be called when a user is logged in or out.
+
+```js
+import { onTokenChange } from 'meteor-apollo-accounts'
+
+onTokenChange(function () {
+  console.log('token did change')
+  window.location.reload()
+})
+```
