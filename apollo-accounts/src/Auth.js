@@ -1,3 +1,6 @@
+import gql from './gql'
+
+export default gql`
 # Type returned when the user logs in
 type LoginMethodResponse {
   # Id of the user logged in user
@@ -18,3 +21,4 @@ input HashedPassword {
   digest: String!
   algorithm: String!
 }
+`

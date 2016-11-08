@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.3.1
+
+- Don't use graphql-compiler
+- Add conditional to password service mutations.
+
 ### v1.3.0
 
 - Pass login method in error message when user tries to log in with the incorrect service.

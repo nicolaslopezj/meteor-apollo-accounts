@@ -1,4 +1,4 @@
-import SchemaTypes from './Auth.graphql'
+import SchemaTypes from './Auth'
 import SchemaMutations from './Mutation'
 import Resolvers from './Resolvers'
 import callMethod from './callMethod'

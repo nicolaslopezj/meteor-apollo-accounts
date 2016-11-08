@@ -7,15 +7,22 @@ import resendVerificationEmail from './resendVerificationEmail'
 import forgotPassword from './forgotPassword'
 import resetPassword from './resetPassword'
 import oauth from './oauth'
+import hasService from './oauth/hasService'
 
-export default {
-  loginWithPassword,
+const resolvers = {
   logout,
-  changePassword,
   createUser,
   verifyEmail,
   resendVerificationEmail,
-  forgotPassword,
-  resetPassword,
   ...oauth
 }
+
+if (hasService('password')) {
+  resolvers.loginWithPassword = loginWithPassword
+  resolvers.changePassword = changePassword
+  resolvers.createUser = createUser
+  resolvers.forgotPassword = forgotPassword
+  resolvers.resetPassword = resetPassword
+}
+
+export default resolvers
