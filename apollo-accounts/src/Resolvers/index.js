@@ -6,6 +6,7 @@ import verifyEmail from './verifyEmail'
 import resendVerificationEmail from './resendVerificationEmail'
 import forgotPassword from './forgotPassword'
 import resetPassword from './resetPassword'
+import oauth from './oauth'
 
 export default {
   loginWithPassword,
@@ -15,5 +16,6 @@ export default {
   verifyEmail,
   resendVerificationEmail,
   forgotPassword,
-  resetPassword
+  resetPassword,
+  ...oauth
 }

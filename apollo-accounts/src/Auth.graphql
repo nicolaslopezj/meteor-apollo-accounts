@@ -1,6 +1,6 @@
 # Type returned when the user logs in
 type LoginMethodResponse {
-  # Id of the user
+  # Id of the user logged in user
   id: String!
   # Token of the connection
   token: String!

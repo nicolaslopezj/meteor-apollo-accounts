@@ -1,13 +1,15 @@
 import changePassword from './changePassword'
 import createUser from './createUser'
 import forgotPassword from './forgotPassword'
-import getLoginToken from './getLoginToken'
 import hashPassword from './hashPassword'
 import loginWithPassword from './loginWithPassword'
 import logout from './logout'
 import resendVerificationEmail from './resendVerificationEmail'
 import resetPassword from './resetPassword'
 import verifyEmail from './verifyEmail'
+import loginWithFacebook from './oauth/loginWithFacebook'
+import loginWithGoogle from './oauth/loginWithGoogle'
+import {onTokenChange, getLoginToken} from './store'
 
 export {
   changePassword,
@@ -19,5 +21,8 @@ export {
   logout,
   resendVerificationEmail,
   resetPassword,
-  verifyEmail
+  verifyEmail,
+  loginWithFacebook,
+  loginWithGoogle,
+  onTokenChange
 }
