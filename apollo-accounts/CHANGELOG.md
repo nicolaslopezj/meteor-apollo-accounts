@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.3.2
+
+- Fix ```Mutation.createUser defined in resolvers, but not in schema```
+
 ### v1.3.1
 
 - Don't use graphql-compiler
