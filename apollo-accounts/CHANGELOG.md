@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.3.3
+
+- Add ```accounts-password``` to weak dependencies.
+
 ### v1.3.2
 
 - Fix ```Mutation.createUser defined in resolvers, but not in schema```
