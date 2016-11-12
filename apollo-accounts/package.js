@@ -1,6 +1,6 @@
 Package.describe({
   name: 'nicolaslopezj:apollo-accounts',
-  version: '1.3.1',
+  version: '1.3.2',
   // Brief, one-line summary of the package.
   summary: 'Meteor accounts in GraphQL',
   // URL to the Git repository containing the source code for this package.

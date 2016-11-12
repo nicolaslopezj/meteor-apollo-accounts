@@ -11,7 +11,6 @@ import hasService from './oauth/hasService'
 
 const resolvers = {
   logout,
-  createUser,
   verifyEmail,
   resendVerificationEmail,
   ...oauth
