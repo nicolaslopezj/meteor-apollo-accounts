@@ -216,6 +216,6 @@ import { onTokenChange } from 'meteor-apollo-accounts'
 
 onTokenChange(function () {
   console.log('token did change')
-  client.resetStore()
+  apollo.resetStore()
 })
 ```
