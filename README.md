@@ -2,7 +2,7 @@
 
 A implementation of Meteor Accounts only in GraphQL with Apollo.
 
-It's compatible with Meteor default accounts and you can use both at the same time.
+This package uses the Meteor Accounts methods in GraphQL, it's compatible with the accounts you have saved in your database and you may use apollo-accounts and Meteor's DPP accounts at the same time.
 
 ## Examples
 
@@ -216,6 +216,6 @@ import { onTokenChange } from 'meteor-apollo-accounts'
 
 onTokenChange(function () {
   console.log('token did change')
-  window.location.reload()
+  apollo.resetStore()
 })
 ```
