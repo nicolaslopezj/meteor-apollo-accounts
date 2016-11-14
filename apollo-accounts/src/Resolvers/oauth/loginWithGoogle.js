@@ -1,4 +1,5 @@
 import resolver from './resolver'
+import HTTP from 'meteor/http'
 
 const handleAuthFromAccessToken = function ({accessToken}) {
   const scopes = getScopes(accessToken)
