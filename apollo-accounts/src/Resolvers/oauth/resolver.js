@@ -1,11 +1,10 @@
 import callMethod from '../../callMethod'
 import getUserLoginMethod from './getUserLoginMethod'
+import {Random} from 'meteor/random'
+import {OAuth} from 'meteor/oauth'
 
 export default function (handleAuthFromAccessToken) {
   return function (root, params, context) {
-    const Random = global.Random
-    const OAuth = global.OAuth
-
     const oauthResult = handleAuthFromAccessToken(params)
     // Why any token works? :/
     const credentialToken = Random.secret()
@@ -25,6 +24,8 @@ export default function (handleAuthFromAccessToken) {
         } else {
           throw new Error('User has no login methods')
         }
+      } else {
+        throw error
       }
     }
   }

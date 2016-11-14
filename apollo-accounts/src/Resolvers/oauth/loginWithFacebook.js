@@ -1,10 +1,7 @@
 import resolver from './resolver'
+import {Facebook} from 'meteor/facebook'
 
 const handleAuthFromAccessToken = function ({accessToken}) {
-  const Facebook = global.Facebook
-  if (!Facebook) {
-    throw new Error('You need to install the meteor packages "facebook" and "accounts-facebook"')
-  }
   // works with anything also...
   const expiresIn = 1000
   const oauthResult = Facebook.handleAuthFromAccessToken(accessToken, (new Date()) + (1000 * expiresIn))

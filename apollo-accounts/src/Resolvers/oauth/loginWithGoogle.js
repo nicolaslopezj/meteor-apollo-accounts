@@ -1,4 +1,5 @@
 import resolver from './resolver'
+import {HTTP} from 'meteor/http'
 
 const handleAuthFromAccessToken = function ({accessToken}) {
   const scopes = getScopes(accessToken)
@@ -18,7 +19,6 @@ const handleAuthFromAccessToken = function ({accessToken}) {
 }
 
 const getIdentity = function (accessToken) {
-  const HTTP = global.HTTP
   try {
     return HTTP.get('https://www.googleapis.com/oauth2/v1/userinfo', {params: {access_token: accessToken}}).data
   } catch (err) {
@@ -27,7 +27,6 @@ const getIdentity = function (accessToken) {
 }
 
 const getScopes = function (accessToken) {
-  const HTTP = global.HTTP
   try {
     return HTTP.get('https://www.googleapis.com/oauth2/v1/tokeninfo', {params: {access_token: accessToken}}).data.scope.split(' ')
   } catch (err) {

@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.3.4
+
+- Add some oauth dependencies to only require installation of accounts-xx.
+- Fix oauth login not throwing errors.
+
 ### v1.3.3
 
 - Add ```accounts-password``` to weak dependencies.
