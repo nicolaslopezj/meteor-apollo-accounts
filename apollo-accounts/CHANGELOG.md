@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.3.5
+
+- Fix production ```standard-minifier-js``` error.
+
 ### v1.3.4
 
 - Add some oauth dependencies to only require installation of accounts-xx.
