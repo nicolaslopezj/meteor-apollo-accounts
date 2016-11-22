@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.3.7
+
+- Fix destroyToken in logout.
+
 ### v1.3.6
 
 - Fix error throwing on ```loginWithPassword```.

@@ -1,11 +1,12 @@
 import {Accounts} from 'meteor/accounts-base'
+import getConnection from '../getConnection'
 
 export default function (root, {token}, context) {
   if (token && context.userId) {
-    Accounts.destroyToken(context.userId, token)
+    const hashedToken = Accounts._hashLoginToken(token)
+    Accounts.destroyToken(context.userId, hashedToken)
   }
-  Accounts._successfulLogout(null, context.userId)
-  return {
-    success: true
-  }
+  const connection = getConnection()
+  Accounts._successfulLogout(connection, context.userId)
+  return { success: true }
 }

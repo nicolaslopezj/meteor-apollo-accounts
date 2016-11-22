@@ -1,5 +1,5 @@
 import {Meteor} from 'meteor/meteor'
-import {Random} from 'meteor/random'
+import getConnection from './getConnection'
 
 export default function (passedContext, name, ...args) {
   const handler = Meteor.default_server.method_handlers[name]
@@ -7,10 +7,9 @@ export default function (passedContext, name, ...args) {
     throw new Meteor.Error(404, `Method '${name}' not found`)
   }
 
+  const connection = getConnection()
   const context = {
-    connection: {
-      id: Random.id()
-    },
+    connection,
     setUserId (userId) {
       /**
        * This will not make any changes if you don\'t pass setUserId function in context
