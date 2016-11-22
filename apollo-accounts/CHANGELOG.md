@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.3.6
+
+- Fix error throwing on ```loginWithPassword```.
+
 ### v1.3.5
 
 - Fix production ```standard-minifier-js``` error.

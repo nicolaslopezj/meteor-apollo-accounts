@@ -24,6 +24,8 @@ export default function (root, {username, email, password, plainPassword}, conte
       } else {
         throw new Error('User has no password set')
       }
+    } else {
+      throw error
     }
   }
 }
