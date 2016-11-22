@@ -27,6 +27,10 @@ export const getLoginToken = function () {
   return global.localStorage['Meteor.loginToken']
 }
 
+export const getUserId = function () {
+  return global.localStorage['Meteor.userId'] || null
+}
+
 export const resetStore = function () {
   storeLoginToken('', '', '')
 }

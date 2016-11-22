@@ -9,6 +9,7 @@ import resetPassword from './resetPassword'
 import verifyEmail from './verifyEmail'
 import loginWithFacebook from './oauth/loginWithFacebook'
 import loginWithGoogle from './oauth/loginWithGoogle'
+import userId from './userId'
 import {onTokenChange, getLoginToken} from './store'
 
 export {
@@ -24,5 +25,6 @@ export {
   verifyEmail,
   loginWithFacebook,
   loginWithGoogle,
-  onTokenChange
+  onTokenChange,
+  userId
 }

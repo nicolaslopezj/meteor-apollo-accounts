@@ -219,3 +219,13 @@ onTokenChange(function () {
   apollo.resetStore()
 })
 ```
+
+#### userId
+
+Returns the id of the logged in user.
+
+```js
+import { userId } from 'meteor-apollo-accounts'
+
+console.log('The id is:', userId())
+```
