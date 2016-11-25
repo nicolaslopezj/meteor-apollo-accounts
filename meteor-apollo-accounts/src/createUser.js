@@ -2,11 +2,11 @@ import hashPassword from './hashPassword'
 import gql from 'graphql-tag'
 import {storeLoginToken} from './store'
 
-export default async function ({username, email, password}, apollo) {
+export default async function ({username, email, password, profile}, apollo) {
   const result = await apollo.mutate({
     mutation: gql`
-    mutation createUser ($username: String, $email: String, $password: HashedPassword!) {
-      createUser (username: $username, email: $email, password: $password) {
+    mutation createUser ($username: String, $email: String, $password: HashedPassword!, $profile: UserProfileInput) {
+      createUser (username: $username, email: $email, password: $password, profile: $profile) {
         id
         token
         tokenExpires
@@ -16,7 +16,8 @@ export default async function ({username, email, password}, apollo) {
     variables: {
       username,
       email,
-      password: hashPassword(password)
+      password: hashPassword(password),
+      profile,
     }
   })
 

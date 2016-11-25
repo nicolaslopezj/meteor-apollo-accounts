@@ -16,28 +16,23 @@ This package uses the Meteor Accounts methods in GraphQL, it's compatible with t
 meteor add nicolaslopezj:apollo-accounts
 ```
 
-Load schema Types
+Load schema Types and Mutations
 
 ```js
-import {SchemaTypes as Auth} from 'meteor/nicolaslopezj:apollo-accounts'
-import Query from './Query.graphql'
-import Mutation from './Mutation'
+import { SchemaMutations, SchemaTypes } from 'meteor/nicolaslopezj:apollo-accounts'
 
-export default [
-  Auth,
-  Query,
-  Mutation
-]
-```
+const rootSchema = `
 
-Load Mutation schema
+${SchemaTypes({
+  UserProfileInput: `
+    firstname: String
+    lastname: String
+    name: String
+  `
+})}
 
-```js
-import {SchemaMutations as Auth} from 'meteor/nicolaslopezj:apollo-accounts'
-
-export default `
-type Mutation {
-  ${Auth}
+type Mutation {  
+  ${SchemaMutations}
 }
 `
 ```
@@ -45,16 +40,18 @@ type Mutation {
 Load auth resolvers into your Mutation resolver
 
 ```js
-import {Resolvers as Auth} from 'meteor/nicolaslopezj:apollo-accounts'
+import { Resolvers } from 'meteor/nicolaslopezj:apollo-accounts'
 
 export default {
   Mutation: {
-    ...Auth
+    ...Resolvers
   }
 }
 ```
 
-### Install on your apollo app (may or may not be the same app)
+### Install on your apollo app
+
+May or may not be the same app.
 
 ```sh
 npm install meteor-apollo-accounts
@@ -127,6 +124,8 @@ createUser({username, email, password}, apollo)
 - ```email```: The user's email address.
 
 - ```password```: The user's password. This is not sent in plain text over the wire.
+
+- ```profile```: The profile object based on the UserProfileInput input type.
 
 - ```apollo```: Apollo client instance.
 

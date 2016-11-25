@@ -4,11 +4,12 @@ import gql from './gql'
 export default gql`
 ${
   hasService('password') ? gql`
+
   # Log the user in with a password.
   loginWithPassword (username: String, email: String, password: HashedPassword, plainPassword: String): LoginMethodResponse
 
   # Create a new user.
-  createUser (username: String, email: String, password: HashedPassword!): LoginMethodResponse
+  createUser (username: String, email: String, password: HashedPassword!, profile: UserProfileInput): LoginMethodResponse
 
   # Change the current user's password. Must be logged in.
   changePassword (oldPassword: HashedPassword!, newPassword: HashedPassword!): SuccessResponse
@@ -23,7 +24,6 @@ ${
 
 # Log the user out.
 logout (token: String!): SuccessResponse
-
 
 # Marks the user's email address as verified. Logs the user in afterwards.
 verifyEmail (token: String!): LoginMethodResponse

@@ -1,6 +1,8 @@
 import gql from './gql'
 
-export default gql`
+export default ({UserProfileInput}) => {
+  return gql`
+
 # Type returned when the user logs in
 type LoginMethodResponse {
   # Id of the user logged in user
@@ -9,6 +11,10 @@ type LoginMethodResponse {
   token: String!
   # Expiration date for the token
   tokenExpires: Float!
+}
+
+input UserProfileInput {
+  ${UserProfileInput}
 }
 
 type SuccessResponse {
@@ -22,3 +28,4 @@ input HashedPassword {
   algorithm: String!
 }
 `
+}
