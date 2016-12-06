@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.4.0
+
+- Login with linkedin.
+
 ### v1.3.7
 
 - Fix destroyToken in logout.
