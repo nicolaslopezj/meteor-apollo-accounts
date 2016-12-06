@@ -12,11 +12,7 @@ const tokenDidChange = function () {
   // Looking for a better way to refetch all queries
   // window.location.reload(0)
   for (const callback of onChangeCallbacks) {
-    try {
-      callback({userId: getUserId(), token: getLoginToken()})
-    } catch (error) {
-      console.log('Error on onChangeCallback', error)
-    }
+    callback({userId: getUserId(), token: getLoginToken()})
   }
 }
 
