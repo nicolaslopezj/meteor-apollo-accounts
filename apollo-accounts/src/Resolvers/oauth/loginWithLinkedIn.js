@@ -7,8 +7,6 @@ const handleAuthFromAccessToken = function ({code, redirectUri}) {
   const accessToken = getAccessToken(code, redirectUri)
   const identity = getIdentity(accessToken)
 
-  console.log('identity', identity)
-
   const serviceData = {
     ...identity,
     accessToken
