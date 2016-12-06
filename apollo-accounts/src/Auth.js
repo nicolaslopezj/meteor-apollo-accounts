@@ -2,7 +2,7 @@ import gql from './gql'
 
 export default (InputTypes) => {
 
-  let { CreateUserProfileInput } = InputTypes ? InputTypes : {}
+  let { CreateUserProfileInput } = InputTypes || {}
 
   return gql`
 
