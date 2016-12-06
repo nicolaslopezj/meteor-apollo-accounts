@@ -13,7 +13,7 @@ const tokenDidChange = function () {
   // window.location.reload(0)
   for (const callback of onChangeCallbacks) {
     try {
-      callback(getUserId())
+      callback({userId: getUserId(), token: getLoginToken()})
     } catch (error) {
       console.log('Error on onChangeCallback', error)
     }
