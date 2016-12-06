@@ -1,6 +1,8 @@
 import gql from './gql'
 
-export default ({CreateUserProfileInput}) => {
+export default (InputTypes) => {
+
+  let { CreateUserProfileInput } = InputTypes ? InputTypes : {}
 
   return gql`
 
@@ -15,7 +17,7 @@ type LoginMethodResponse {
 }
 
 input CreateUserProfileInput {
-  ${CreateUserProfileInput ? CreateUserProfileInput : ''}
+  ${CreateUserProfileInput ? CreateUserProfileInput : 'name: String'}
 }
 
 type SuccessResponse {
