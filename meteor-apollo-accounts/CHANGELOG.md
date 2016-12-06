@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.1.2
+
+- Pass userId and token in onTokenChange callback.
+- Remove error catcher in onTokenChange callback.
+
 ### v1.1.1
 
 - Add userId() function.
