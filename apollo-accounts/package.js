@@ -31,8 +31,8 @@ Package.onUse(function (api) {
     'accounts-password',
     'accounts-facebook',
     'accounts-google',
-    'pauli:accounts-linkedin',
-    'jonperl:accounts-linkedin'
+    'pauli:accounts-linkedin@1.3.1',
+    'jonperl:accounts-linkedin@1.1.0'
   ], {weak: true})
 
   api.mainModule('src/index.js', 'server')
