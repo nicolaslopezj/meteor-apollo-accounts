@@ -1,14 +1,18 @@
 const onChangeCallbacks = []
 
+export const getLoginToken = function () {
+  return global.localStorage['Meteor.loginToken']
+}
+
+export const getUserId = function () {
+  return global.localStorage['Meteor.userId'] || null
+}
+
 const tokenDidChange = function () {
   // Looking for a better way to refetch all queries
   // window.location.reload(0)
   for (const callback of onChangeCallbacks) {
-    try {
-      callback()
-    } catch (error) {
-      console.log('Error on onChangeCallback', error)
-    }
+    callback({userId: getUserId(), token: getLoginToken()})
   }
 }
 
@@ -21,14 +25,6 @@ export const storeLoginToken = function (userId, token, tokenExpires) {
   global.localStorage['Meteor.loginToken'] = token
   global.localStorage['Meteor.loginTokenExpires'] = tokenExpires
   tokenDidChange()
-}
-
-export const getLoginToken = function () {
-  return global.localStorage['Meteor.loginToken']
-}
-
-export const getUserId = function () {
-  return global.localStorage['Meteor.userId'] || null
 }
 
 export const resetStore = function () {
