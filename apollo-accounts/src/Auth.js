@@ -1,6 +1,7 @@
 import gql from './gql'
 
-export default ({UserProfileInput}) => {
+export default ({CreateUserProfileInput}) => {
+
   return gql`
 
 # Type returned when the user logs in
@@ -13,8 +14,8 @@ type LoginMethodResponse {
   tokenExpires: Float!
 }
 
-input UserProfileInput {
-  ${UserProfileInput}
+input CreateUserProfileInput {
+  ${CreateUserProfileInput ? CreateUserProfileInput : ''}
 }
 
 type SuccessResponse {

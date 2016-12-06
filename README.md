@@ -24,7 +24,7 @@ import { SchemaMutations, SchemaTypes } from 'meteor/nicolaslopezj:apollo-accoun
 const rootSchema = `
 
 ${SchemaTypes({
-  UserProfileInput: `
+  CreateUserProfileInput: `
     firstname: String
     lastname: String
     name: String

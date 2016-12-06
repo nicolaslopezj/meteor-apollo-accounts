@@ -9,7 +9,7 @@ ${
   loginWithPassword (username: String, email: String, password: HashedPassword, plainPassword: String): LoginMethodResponse
 
   # Create a new user.
-  createUser (username: String, email: String, password: HashedPassword!, profile: UserProfileInput): LoginMethodResponse
+  createUser (username: String, email: String, password: HashedPassword!, profile: CreateUserProfileInput): LoginMethodResponse
 
   # Change the current user's password. Must be logged in.
   changePassword (oldPassword: HashedPassword!, newPassword: HashedPassword!): SuccessResponse
