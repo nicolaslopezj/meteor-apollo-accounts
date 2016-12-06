@@ -4,11 +4,7 @@ const tokenDidChange = function () {
   // Looking for a better way to refetch all queries
   // window.location.reload(0)
   for (const callback of onChangeCallbacks) {
-    try {
-      callback()
-    } catch (error) {
-      console.log('Error on onChangeCallback', error)
-    }
+    callback()
   }
 }
 
