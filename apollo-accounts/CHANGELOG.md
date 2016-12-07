@@ -1,5 +1,9 @@
 # Changelog
 
+### v2.1.0
+
+- Add plainPassword option to createUser.
+
 ### v2.0.0
 
 - Make ```SchemaMutations```, ```SchemaTypes``` and ```Resolvers``` functions that receive options.
