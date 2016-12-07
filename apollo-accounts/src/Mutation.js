@@ -1,14 +1,24 @@
 import hasService from './Resolvers/oauth/hasService'
-import gql from './gql'
 
-export default gql`
+const defaultOptions = {
+  // no options yet
+}
+
+export default function (givenOptions = {}) {
+  const options = {
+    ...defaultOptions,
+    ...givenOptions
+  }
+
+  return `
 ${
-  hasService('password') ? gql`
+  hasService('password') ? `
+
   # Log the user in with a password.
   loginWithPassword (username: String, email: String, password: HashedPassword, plainPassword: String): LoginMethodResponse
 
   # Create a new user.
-  createUser (username: String, email: String, password: HashedPassword!): LoginMethodResponse
+  createUser (username: String, email: String, password: HashedPassword!, profile: CreateUserProfileInput): LoginMethodResponse
 
   # Change the current user's password. Must be logged in.
   changePassword (oldPassword: HashedPassword!, newPassword: HashedPassword!): SuccessResponse
@@ -24,7 +34,6 @@ ${
 # Log the user out.
 logout (token: String!): SuccessResponse
 
-
 # Marks the user's email address as verified. Logs the user in afterwards.
 verifyEmail (token: String!): LoginMethodResponse
 
@@ -32,23 +41,24 @@ verifyEmail (token: String!): LoginMethodResponse
 resendVerificationEmail (email: String): SuccessResponse
 
 ${
-  hasService('facebook') ? gql`
+  hasService('facebook') ? `
   # Login the user with a facebook access token
   loginWithFacebook (accessToken: String!): LoginMethodResponse
   ` : ''
 }
 
 ${
-  hasService('google') ? gql`
+  hasService('google') ? `
   # Login the user with a facebook access token
   loginWithGoogle (accessToken: String!, tokenId: String): LoginMethodResponse
   ` : ''
 }
 
 ${
-  hasService('linkedin') ? gql`
+  hasService('linkedin') ? `
   # Login the user with a facebook access token
   loginWithLinkedIn (code: String!, redirectUri: String!): LoginMethodResponse
   ` : ''
 }
 `
+}

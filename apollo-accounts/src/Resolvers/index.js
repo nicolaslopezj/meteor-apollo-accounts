@@ -24,4 +24,15 @@ if (hasService('password')) {
   resolvers.resetPassword = resetPassword
 }
 
-export default resolvers
+const defaultOptions = {
+  // no options yet
+}
+
+export default function (givenOptions = {}) {
+  const options = {
+    ...defaultOptions,
+    ...givenOptions
+  }
+
+  return resolvers
+}
