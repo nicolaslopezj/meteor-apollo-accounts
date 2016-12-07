@@ -6,7 +6,7 @@ import schema from './schema.graphql'
 
 export default [
   User,
-  Auth,
+  Auth(),
   Query,
   Mutation,
   schema
