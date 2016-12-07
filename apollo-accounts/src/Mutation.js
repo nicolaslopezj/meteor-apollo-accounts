@@ -44,4 +44,11 @@ ${
   loginWithGoogle (accessToken: String!, tokenId: String): LoginMethodResponse
   ` : ''
 }
+
+${
+  hasService('linkedin') ? gql`
+  # Login the user with a facebook access token
+  loginWithLinkedIn (code: String!, redirectUri: String!): LoginMethodResponse
+  ` : ''
+}
 `

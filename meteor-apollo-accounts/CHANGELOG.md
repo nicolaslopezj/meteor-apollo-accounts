@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.2.0
+
+- Login with linkedin.
+
 ### v1.1.2
 
 - Pass userId and token in onTokenChange callback.
