@@ -1,9 +1,18 @@
 import hasService from './Resolvers/oauth/hasService'
-import gql from './gql'
 
-export default gql`
+const defaultOptions = {
+  // no options yet
+}
+
+export default function (givenOptions = {}) {
+  const options = {
+    ...defaultOptions,
+    ...givenOptions
+  }
+
+  return `
 ${
-  hasService('password') ? gql`
+  hasService('password') ? `
 
   # Log the user in with a password.
   loginWithPassword (username: String, email: String, password: HashedPassword, plainPassword: String): LoginMethodResponse
@@ -32,23 +41,24 @@ verifyEmail (token: String!): LoginMethodResponse
 resendVerificationEmail (email: String): SuccessResponse
 
 ${
-  hasService('facebook') ? gql`
+  hasService('facebook') ? `
   # Login the user with a facebook access token
   loginWithFacebook (accessToken: String!): LoginMethodResponse
   ` : ''
 }
 
 ${
-  hasService('google') ? gql`
+  hasService('google') ? `
   # Login the user with a facebook access token
   loginWithGoogle (accessToken: String!, tokenId: String): LoginMethodResponse
   ` : ''
 }
 
 ${
-  hasService('linkedin') ? gql`
+  hasService('linkedin') ? `
   # Login the user with a facebook access token
   loginWithLinkedIn (code: String!, redirectUri: String!): LoginMethodResponse
   ` : ''
 }
 `
+}

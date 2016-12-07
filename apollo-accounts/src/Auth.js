@@ -1,11 +1,13 @@
-import gql from './gql'
+const defaultOptions = {
+  CreateUserProfileInput: 'name: String'
+}
 
-export default (InputTypes) => {
-
-  let { CreateUserProfileInput } = InputTypes || {}
-
-  return gql`
-
+export default function (givenOptions = {}) {
+  const options = {
+    ...defaultOptions,
+    ...givenOptions
+  }
+  return `
 # Type returned when the user logs in
 type LoginMethodResponse {
   # Id of the user logged in user
@@ -17,7 +19,7 @@ type LoginMethodResponse {
 }
 
 input CreateUserProfileInput {
-  ${CreateUserProfileInput ? CreateUserProfileInput : 'name: String'}
+  ${options.CreateUserProfileInput}
 }
 
 type SuccessResponse {
@@ -27,7 +29,9 @@ type SuccessResponse {
 
 # A hashsed password
 input HashedPassword {
+  # The hashed password
   digest: String!
+  # Algorithm used to hash the password
   algorithm: String!
 }
 `

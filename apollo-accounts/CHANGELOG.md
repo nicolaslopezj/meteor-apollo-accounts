@@ -1,5 +1,15 @@
 # Changelog
 
+### v2.0.0
+
+- Make ```SchemaMutations```, ```SchemaTypes``` and ```Resolvers``` functions that receive options.
+
+To migrate change:
+
+- ```SchemaMutations``` to ```SchemaMutations()```
+- ```SchemaTypes``` to ```SchemaTypes()```
+- ```Resolvers``` to ```Resolvers()```
+
 ### v1.4.0
 
 - Login with linkedin.

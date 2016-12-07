@@ -22,17 +22,15 @@ Load schema Types and Mutations
 import { SchemaMutations, SchemaTypes } from 'meteor/nicolaslopezj:apollo-accounts'
 
 const rootSchema = `
-
 ${SchemaTypes({
   CreateUserProfileInput: `
-    firstname: String
-    lastname: String
-    name: String
+    firstName: String
+    lastName: String
   `
 })}
 
 type Mutation {  
-  ${SchemaMutations}
+  ${SchemaMutations()}
 }
 `
 ```
@@ -44,7 +42,7 @@ import { Resolvers } from 'meteor/nicolaslopezj:apollo-accounts'
 
 export default {
   Mutation: {
-    ...Resolvers
+    ...Resolvers()
   }
 }
 ```
