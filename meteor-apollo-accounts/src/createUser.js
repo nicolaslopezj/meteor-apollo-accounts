@@ -17,7 +17,7 @@ export default async function ({username, email, password, profile}, apollo) {
       username,
       email,
       password: hashPassword(password),
-      profile,
+      profile
     }
   })
 

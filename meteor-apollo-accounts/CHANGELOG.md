@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.3.0
+
+- Pass profile to createUser.
+
 ### v1.2.0
 
 - Login with linkedin.
