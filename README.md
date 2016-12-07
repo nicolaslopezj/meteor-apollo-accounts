@@ -114,7 +114,7 @@ Create a new user.
 ```js
 import { createUser } from 'meteor-apollo-accounts'
 
-createUser({username, email, password}, apollo)
+createUser({username, email, password, profile}, apollo)
 ```
 
 - ```username```: A unique name for this user.
@@ -123,7 +123,7 @@ createUser({username, email, password}, apollo)
 
 - ```password```: The user's password. This is not sent in plain text over the wire.
 
-- ```profile```: The profile object based on the UserProfileInput input type.
+- ```profile```: The profile object based on the ```UserProfileInput``` input type.
 
 - ```apollo```: Apollo client instance.
 
