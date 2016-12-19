@@ -9,7 +9,7 @@ This package uses the Meteor Accounts methods in GraphQL, it's compatible with t
 - [janikvonrotz/meteor-apollo-accounts-example](https://github.com/janikvonrotz/meteor-apollo-accounts-example): Meteor client and server side.
 
 ## Tutorials
-- [Using Meteor With Apollo and React](https://medium.com/p/df3c89b46b17/)
+- [Using Meteor With Apollo and React](https://blog.orionsoft.io/using-meteor-accounts-with-apollo-and-react-df3c89b46b17#.znozw2zbd)
 
 # Installing
 
