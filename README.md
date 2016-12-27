@@ -233,5 +233,5 @@ console.log('The id is:', userId())
 
 ## Contributors
 
-- @nicolaslopezj
-- @janikvonrotz
+- [@nicolaslopezj](https://github.com/nicolaslopezj)
+- [@janikvonrotz](https://github.com/janikvonrotz)
