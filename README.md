@@ -229,3 +229,9 @@ import { userId } from 'meteor-apollo-accounts'
 
 console.log('The id is:', userId())
 ```
+
+
+## Contributors
+
+- @nicolaslopezj
+- @janikvonrotz
