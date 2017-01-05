@@ -1,16 +1,39 @@
+
 const onChangeCallbacks = []
 
-export const getLoginToken = function () {
-  return global.localStorage['Meteor.loginToken']
+let tokenStore = {
+  set: async function ({userId, token, tokenExpires}) {
+    global.localStorage['Meteor.userId'] = userId
+    global.localStorage['Meteor.loginToken'] = token
+    global.localStorage['Meteor.loginTokenExpires'] = tokenExpires.toString()
+  },
+  get: async function ({userId, token, tokenExpires}) {
+    return {
+      userId: global.localStorage['Meteor.userId'],
+      token: global.localStorage['Meteor.loginToken'],
+      tokenExpires: global.localStorage['Meteor.loginTokenExpires']
+    }
+  }
 }
 
-export const getUserId = function () {
-  return global.localStorage['Meteor.userId'] || null
+export const setTokenStore = function (newStore) {
+  tokenStore = newStore
+}
+
+export const storeLoginToken = function (userId, token, tokenExpires) {
+  tokenStore.set({userId, token, tokenExpires})
+  tokenDidChange()
+}
+
+export const getLoginToken = async function () {
+  return tokenStore.get({token}) || null
+}
+
+export const getUserId = async function () {
+  return tokenStore.get({userId}) || null
 }
 
 const tokenDidChange = function () {
-  // Looking for a better way to refetch all queries
-  // window.location.reload(0)
   for (const callback of onChangeCallbacks) {
     callback({userId: getUserId(), token: getLoginToken()})
   }
@@ -18,13 +41,6 @@ const tokenDidChange = function () {
 
 export const onTokenChange = function (callback) {
   onChangeCallbacks.push(callback)
-}
-
-export const storeLoginToken = function (userId, token, tokenExpires) {
-  global.localStorage['Meteor.userId'] = userId
-  global.localStorage['Meteor.loginToken'] = token
-  global.localStorage['Meteor.loginTokenExpires'] = tokenExpires
-  tokenDidChange()
 }
 
 export const resetStore = function () {
