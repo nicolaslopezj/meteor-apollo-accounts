@@ -7,6 +7,10 @@ This package uses the Meteor Accounts methods in GraphQL, it's compatible with t
 ## Examples
 
 - [janikvonrotz/meteor-apollo-accounts-example](https://github.com/janikvonrotz/meteor-apollo-accounts-example): Meteor client and server side.
+- [orionsoft/server-boilerplate](https://github.com/orionsoft/server-boilerplate): Large Meteor server side only starter app.
+
+## Tutorials
+- [Using Meteor With Apollo and React](https://blog.orionsoft.io/using-meteor-accounts-with-apollo-and-react-df3c89b46b17#.znozw2zbd)
 
 # Installing
 
@@ -226,3 +230,9 @@ import { userId } from 'meteor-apollo-accounts'
 
 console.log('The id is:', userId())
 ```
+
+
+## Contributors
+
+- [@nicolaslopezj](https://github.com/nicolaslopezj)
+- [@janikvonrotz](https://github.com/janikvonrotz)
