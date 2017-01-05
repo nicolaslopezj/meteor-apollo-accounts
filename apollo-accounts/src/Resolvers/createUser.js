@@ -7,6 +7,7 @@ export default function (root, options, context) {
   }
   if (!options.password) {
     options.password = hashPassword(options.plainPassword)
+    delete options.plainPassword
   }
   return callMethod(context, 'createUser', options)
 }
