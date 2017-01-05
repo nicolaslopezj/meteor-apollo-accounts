@@ -7,7 +7,7 @@ let tokenStore = {
     global.localStorage['Meteor.loginToken'] = token
     global.localStorage['Meteor.loginTokenExpires'] = tokenExpires.toString()
   },
-  get: async function ({userId, token, tokenExpires}) {
+  get: async function () {
     return {
       userId: global.localStorage['Meteor.userId'],
       token: global.localStorage['Meteor.loginToken'],
@@ -26,11 +26,11 @@ export const storeLoginToken = function (userId, token, tokenExpires) {
 }
 
 export const getLoginToken = async function () {
-  return tokenStore.get({token}) || null
+  return tokenStore.get().token || null
 }
 
 export const getUserId = async function () {
-  return tokenStore.get({userId}) || null
+  return tokenStore.get().userId || null
 }
 
 const tokenDidChange = function () {
