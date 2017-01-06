@@ -11,7 +11,7 @@ import loginWithFacebook from './oauth/loginWithFacebook'
 import loginWithGoogle from './oauth/loginWithGoogle'
 import loginWithLinkedIn from './oauth/loginWithLinkedIn'
 import userId from './userId'
-import {onTokenChange, getLoginToken} from './store'
+import {onTokenChange, getLoginToken, setTokenStore} from './store'
 
 export {
   changePassword,
@@ -28,5 +28,6 @@ export {
   loginWithGoogle,
   loginWithLinkedIn,
   onTokenChange,
+  setTokenStore,
   userId
 }
