@@ -1,5 +1,9 @@
 # Changelog
 
+### v2.2.0
+
+- Use async in all mutations.
+
 ### v2.1.0
 
 - Add plainPassword option to createUser.

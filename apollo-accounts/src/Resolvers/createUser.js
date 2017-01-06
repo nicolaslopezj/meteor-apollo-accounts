@@ -1,7 +1,10 @@
 import callMethod from '../callMethod'
 import hashPassword from './hashPassword'
+import {Meteor} from 'meteor/meteor'
 
-export default function (root, options, context) {
+export default async function (root, options, context) {
+  console.log('hello world')
+  Meteor._nodeCodeMustBeInFiber()
   if (!options.password && !options.plainPassword) {
     throw new Error('Password is required')
   }
@@ -9,5 +12,8 @@ export default function (root, options, context) {
     options.password = hashPassword(options.plainPassword)
     delete options.plainPassword
   }
-  return callMethod(context, 'createUser', options)
+  console.log('will call method')
+  const result = callMethod(context, 'createUser', options)
+  console.log(result)
+  return result
 }

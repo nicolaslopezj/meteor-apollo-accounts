@@ -2,7 +2,7 @@ import callMethod from '../callMethod'
 import hashPassword from './hashPassword'
 import getUserLoginMethod from './oauth/getUserLoginMethod'
 
-export default function (root, {username, email, password, plainPassword}, context) {
+export default async function (root, {username, email, password, plainPassword}, context) {
   if (!password && !plainPassword) {
     throw new Error('Password is required')
   }

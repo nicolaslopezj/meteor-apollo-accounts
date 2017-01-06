@@ -4,7 +4,7 @@ import {Random} from 'meteor/random'
 import {OAuth} from 'meteor/oauth'
 
 export default function (handleAuthFromAccessToken) {
-  return function (root, params, context) {
+  return async function (root, params, context) {
     const oauthResult = handleAuthFromAccessToken(params)
     // Why any token works? :/
     const credentialToken = Random.secret()
