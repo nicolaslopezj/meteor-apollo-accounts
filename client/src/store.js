@@ -2,7 +2,7 @@
 const onChangeCallbacks = []
 
 let tokenStore = {
-  set: async function ({userId, token, tokenExpires}) {
+  set: async function (userId, token, tokenExpires) {
     global.localStorage['Meteor.userId'] = userId
     global.localStorage['Meteor.loginToken'] = token
     global.localStorage['Meteor.loginTokenExpires'] = tokenExpires.toString()

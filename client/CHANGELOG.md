@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.4.1
+
+- Fixing a bug related to global storage
+
 ### v1.4.0
 
 - React Native support.
