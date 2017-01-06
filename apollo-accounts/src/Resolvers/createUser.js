@@ -12,8 +12,5 @@ export default async function (root, options, context) {
     options.password = hashPassword(options.plainPassword)
     delete options.plainPassword
   }
-  console.log('will call method')
-  const result = callMethod(context, 'createUser', options)
-  console.log(result)
-  return result
+  return callMethod(context, 'createUser', options)
 }
