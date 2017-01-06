@@ -246,7 +246,6 @@ import {
 import { loginWithPassword, userId, setTokenStore} from 'meteor-apollo-accounts'
 
 // Then you'll need to define a TokenStore for your user data using setTokenStore :
-
 setTokenStore({
   set: async function ({userId, token, tokenExpires}) {
     await AsyncStorage.setItem('Meteor.userId', userId)
