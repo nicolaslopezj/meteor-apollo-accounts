@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.4.2
+
+- Fixing a bug related to async/await usage
+
 ### v1.4.1
 
 - Fixing a bug related to global storage
