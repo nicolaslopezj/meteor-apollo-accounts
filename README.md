@@ -243,13 +243,9 @@ import {
   AsyncStorage
 } from 'react-native';
 
-
-
-// Then you'll need to define a TokenStore for your user data using setTokenStore :
-
-
 import { loginWithPassword, userId, setTokenStore} from 'meteor-apollo-accounts'
 
+// Then you'll need to define a TokenStore for your user data using setTokenStore :
 
 setTokenStore({
   set: async function ({userId, token, tokenExpires}) {
@@ -268,12 +264,11 @@ setTokenStore({
 })
 
 // Finally, you'll be able to use asynchronously any method from the library :
-
 async login (event) {
   event.preventDefault();
 
   try {
-    const id_ = await loginWithPassword({ "example@orion.com", "challenging" }, this.client)
+    const id_ = await loginWithPassword({ "email", "password" }, this.client)
     this.client.resetStore()
   } catch (error) {
 
