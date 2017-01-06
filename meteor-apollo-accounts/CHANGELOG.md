@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.4.0
+
+- React Native support.
+
 ### v1.3.0
 
 - Pass profile to createUser.

@@ -26,11 +26,11 @@ export const storeLoginToken = function (userId, token, tokenExpires) {
 }
 
 export const getLoginToken = async function () {
-  return tokenStore.get().token || null
+  return await tokenStore.get().token || null
 }
 
 export const getUserId = async function () {
-  return tokenStore.get().userId || null
+  return await tokenStore.get().userId || null
 }
 
 const tokenDidChange = function () {
