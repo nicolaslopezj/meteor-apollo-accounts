@@ -1,6 +1,6 @@
 {
   "name": "meteor-apollo-accounts",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Meteor accounts in GraphQL",
   "main": "./client",
   "repository": {
@@ -19,7 +19,8 @@
     "meteor",
     "apollo",
     "graphql",
-    "accounts"
+    "accounts",
+    "react-native"
   ],
   "author": "nicolaslopezj",
   "license": "MIT",
