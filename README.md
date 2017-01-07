@@ -233,10 +233,12 @@ console.log('The id is:', userId())
 
 ### React-Native usage
 
-First you'll need to import the Storage library that you'll use to store the user details (userId, tokens...),
-AsynStorage is highly recommended.
+
 
 ```js
+
+//First you'll need to import the Storage library that you'll use to store the user details (userId, tokens...),
+// AsyncStorage is highly recommended.
 
 import {
   ...
@@ -245,7 +247,7 @@ import {
 
 import { loginWithPassword, userId, setTokenStore} from 'meteor-apollo-accounts'
 
-// Then you'll need to define a TokenStore for your user data using setTokenStore :
+// Then you'll have to define a TokenStore for your user data using setTokenStore (for instance when your component is mounted) :
 setTokenStore({
   set: async function ({userId, token, tokenExpires}) {
     await AsyncStorage.setItem('Meteor.userId', userId)
