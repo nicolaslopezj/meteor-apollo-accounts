@@ -11,10 +11,10 @@ export default async function (apollo) {
     }
     `,
     variables: {
-      token: getLoginToken()
+      token: await getLoginToken()
     }
   })
 
-  resetStore()
+  await resetStore()
   return result.data.logout.success
 }

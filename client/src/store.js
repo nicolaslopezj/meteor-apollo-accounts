@@ -20,22 +20,25 @@ export const setTokenStore = function (newStore) {
   tokenStore = newStore
 }
 
-export const storeLoginToken = function (userId, token, tokenExpires) {
-  tokenStore.set({userId, token, tokenExpires})
-  tokenDidChange()
+export const storeLoginToken = async function (userId, token, tokenExpires) {
+  await tokenStore.set({userId, token, tokenExpires})
+  await tokenDidChange()
 }
 
 export const getLoginToken = async function () {
-  return await tokenStore.get().token || null
+  const {token} = await tokenStore.get()
+  return token
 }
 
 export const getUserId = async function () {
-  return await tokenStore.get().userId || null
+  const {userId} = await tokenStore.get()
+  return userId
 }
 
-const tokenDidChange = function () {
+const tokenDidChange = async function () {
+  const newData = await tokenStore.get()
   for (const callback of onChangeCallbacks) {
-    callback({userId: getUserId(), token: getLoginToken()})
+    callback(newData)
   }
 }
 
@@ -43,6 +46,6 @@ export const onTokenChange = function (callback) {
   onChangeCallbacks.push(callback)
 }
 
-export const resetStore = function () {
-  storeLoginToken('', '', '')
+export const resetStore = async function () {
+  await storeLoginToken('', '', '')
 }

@@ -1,8 +1,9 @@
 # Changelog
 
-### v1.4.0
+### v2.0.0
 
 - React Native support.
+- Return promises in all store functions.
 
 ### v1.3.0
 

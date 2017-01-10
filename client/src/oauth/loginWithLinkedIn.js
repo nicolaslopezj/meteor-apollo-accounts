@@ -21,6 +21,6 @@ export default async function ({code, redirectUri}, apollo) {
   })
 
   const {id, token, tokenExpires} = result.data.loginWithLinkedIn
-  storeLoginToken(id, token, new Date(tokenExpires))
+  await storeLoginToken(id, token, new Date(tokenExpires))
   return id
 }

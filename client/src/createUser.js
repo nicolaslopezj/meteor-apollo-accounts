@@ -22,6 +22,6 @@ export default async function ({username, email, password, profile}, apollo) {
   })
 
   const {id, token, tokenExpires} = result.data.createUser
-  storeLoginToken(id, token, new Date(tokenExpires))
+  await storeLoginToken(id, token, new Date(tokenExpires))
   return id
 }

@@ -23,6 +23,6 @@ export default async function ({accessToken}, apollo) {
   })
 
   const {id, token, tokenExpires} = result.data.loginWithGoogle
-  storeLoginToken(id, token, new Date(tokenExpires))
+  await storeLoginToken(id, token, new Date(tokenExpires))
   return id
 }

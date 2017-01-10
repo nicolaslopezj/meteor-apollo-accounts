@@ -18,6 +18,6 @@ export default async function ({newPassword, token}, apollo) {
   })
 
   const {id, token: loginToken, tokenExpires} = result.data.resetPassword
-  storeLoginToken(id, loginToken, new Date(tokenExpires))
+  await storeLoginToken(id, loginToken, new Date(tokenExpires))
   return id
 }

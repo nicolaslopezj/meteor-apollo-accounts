@@ -16,6 +16,6 @@ export default async function ({token}, apollo) {
   })
 
   const {id, token: loginToken, tokenExpires} = result.data.verifyEmail
-  storeLoginToken(id, loginToken, new Date(tokenExpires))
+  await storeLoginToken(id, loginToken, new Date(tokenExpires))
   return id
 }
