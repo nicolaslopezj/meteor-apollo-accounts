@@ -2,7 +2,7 @@
 
 Package.describe({
   name: 'nicolaslopezj:apollo-accounts',
-  version: '3.0.0',
+  version: '3.0.1',
   // Brief, one-line summary of the package.
   summary: 'Meteor accounts in GraphQL',
   // URL to the Git repository containing the source code for this package.
@@ -16,6 +16,7 @@ Package.onUse(function (api) {
   api.versionsFrom('1.4.1.2')
 
   api.use([
+    'tmeasday:check-npm-versions',
     'check',
     'accounts-base',
     'npm-bcrypt',

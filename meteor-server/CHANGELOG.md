@@ -1,5 +1,9 @@
 # Changelog
 
+### v3.0.1
+
+- Fix bug with ```tmeasday:check-npm-versions```.
+
 ### v3.0.0
 
 - Use [orionsoft:graphql-loader](https://github.com/orionsoft/graphql-loader) to initialize package.
