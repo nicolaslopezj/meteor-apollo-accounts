@@ -1,12 +1,4 @@
-const defaultOptions = {
-  CreateUserProfileInput: 'name: String'
-}
-
-export default function (givenOptions = {}) {
-  const options = {
-    ...defaultOptions,
-    ...givenOptions
-  }
+export default function (options) {
   return `
 # Type returned when the user logs in
 type LoginMethodResponse {
@@ -16,6 +8,8 @@ type LoginMethodResponse {
   token: String!
   # Expiration date for the token
   tokenExpires: Float!
+  # The logged in user
+  user: User
 }
 
 input CreateUserProfileInput {

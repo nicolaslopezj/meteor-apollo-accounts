@@ -4,6 +4,8 @@ A implementation of Meteor Accounts only in GraphQL with Apollo.
 
 This package uses the Meteor Accounts methods in GraphQL, it's compatible with the accounts you have saved in your database and you may use apollo-accounts and Meteor's DPP accounts at the same time.
 
+> Sorry for all the api changes, now we will use [graphql-loader](https://github.com/orionsoft/graphql-loader) for a long term solution.
+
 ## Examples
 
 - [janikvonrotz/meteor-apollo-accounts-example](https://github.com/janikvonrotz/meteor-apollo-accounts-example): Meteor client and server side.
@@ -18,38 +20,29 @@ This package uses the Meteor Accounts methods in GraphQL, it's compatible with t
 
 ```sh
 meteor add nicolaslopezj:apollo-accounts
+yarn add graphql-loader
 ```
 
-Load schema Types and Mutations
+Initialize the package.
 
 ```js
-import { SchemaMutations, SchemaTypes } from 'meteor/nicolaslopezj:apollo-accounts'
+import {loadSchema, getSchema} from 'graphql-loader'
+import {initAccounts} from 'meteor/nicolaslopezj:apollo-accounts'
+import typeDefs from './schema'
+import resolvers from './resolvers'
 
-const rootSchema = `
-${SchemaTypes({
-  CreateUserProfileInput: `
-    firstName: String
-    lastName: String
-  `
-})}
+const options = {}
+// Load all accounts related resolvers and type definitions into graphql-loader
+initAccounts(options)
 
-type Mutation {  
-  ${SchemaMutations()}
-}
-`
+// Load all your resolvers and type definitions into graphql-loader
+loadSchema({typeDefs, resolvers})
+
+// Gets all the resolvers and type definitions loaded in graphql-loader
+const schema = getSchema()
+const executableSchema = makeExecutableSchema(schema)
 ```
 
-Load auth resolvers into your Mutation resolver
-
-```js
-import { Resolvers } from 'meteor/nicolaslopezj:apollo-accounts'
-
-export default {
-  Mutation: {
-    ...Resolvers()
-  }
-}
-```
 
 ### Install on your apollo app
 

@@ -1,32 +1,27 @@
+import './checkNpm'
 import SchemaTypes from './Auth'
-import SchemaMutations from './Mutation'
-import Resolvers from './Resolvers'
+import SchemaMutations from './Mutations'
+import Mutation from './Mutation'
+import LoginMethodResponse from './LoginMethodResponse'
 import callMethod from './callMethod'
+import {loadSchema} from 'graphql-loader'
 
-/**
- * Resolvers
- */
-import loginWithPassword from './Resolvers/loginWithPassword'
-import logout from './Resolvers/logout'
-import changePassword from './Resolvers/changePassword'
-import createUser from './Resolvers/createUser'
-import verifyEmail from './Resolvers/verifyEmail'
-import resendVerificationEmail from './Resolvers/resendVerificationEmail'
-import forgotPassword from './Resolvers/forgotPassword'
-import resetPassword from './Resolvers/resetPassword'
+const initAccounts = function (givenOptions) {
+  const defaultOptions = {
+    CreateUserProfileInput: 'name: String'
+  }
+  const options = {
+    ...defaultOptions,
+    ...givenOptions
+  }
+
+  const typeDefs = [SchemaTypes(options), ...SchemaMutations(options)]
+  const resolvers = {...Mutation(options), ...LoginMethodResponse(options)}
+
+  loadSchema({typeDefs, resolvers})
+}
 
 export {
-  SchemaTypes,
-  SchemaMutations,
-  Resolvers,
   callMethod,
-  /* Also export all resolvers */
-  loginWithPassword,
-  logout,
-  changePassword,
-  createUser,
-  verifyEmail,
-  resendVerificationEmail,
-  forgotPassword,
-  resetPassword
+  initAccounts
 }

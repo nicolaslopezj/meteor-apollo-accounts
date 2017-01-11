@@ -1,5 +1,10 @@
 # Changelog
 
+### v3.0.0
+
+- Use [orionsoft:graphql-loader](https://github.com/orionsoft/graphql-loader) to initialize package.
+- Add user field to LoginMethodResponse [#23](https://github.com/nicolaslopezj/meteor-apollo-accounts/issues/23).
+
 ### v2.2.0
 
 - Use async in all mutations.

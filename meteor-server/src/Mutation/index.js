@@ -24,15 +24,6 @@ if (hasService('password')) {
   resolvers.resetPassword = resetPassword
 }
 
-const defaultOptions = {
-  // no options yet
-}
-
-export default function (givenOptions = {}) {
-  const options = {
-    ...defaultOptions,
-    ...givenOptions
-  }
-
-  return resolvers
+export default function (options) {
+  return {Mutation: resolvers}
 }
