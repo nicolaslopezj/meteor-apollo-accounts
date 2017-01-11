@@ -16,7 +16,7 @@ Package.onUse(function (api) {
   api.versionsFrom('1.4.1.2')
 
   api.use([
-    'tmeasday:check-npm-versions',
+    'tmeasday:check-npm-versions@0.3.1',
     'check',
     'accounts-base',
     'npm-bcrypt',
