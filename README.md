@@ -26,6 +26,7 @@ yarn add graphql-loader
 Initialize the package.
 
 ```js
+import {makeExecutableSchema} from 'graphql-tools'
 import {loadSchema, getSchema} from 'graphql-loader'
 import {initAccounts} from 'meteor/nicolaslopezj:apollo-accounts'
 import typeDefs from './schema'
