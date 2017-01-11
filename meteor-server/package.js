@@ -1,3 +1,5 @@
+/* global Package */
+
 Package.describe({
   name: 'nicolaslopezj:apollo-accounts',
   version: '3.0.0',
