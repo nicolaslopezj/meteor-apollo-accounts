@@ -53,6 +53,65 @@ npm install meteor-apollo-accounts
 ## Tutorials
 - [Using Meteor With Apollo and React](https://blog.orionsoft.io/using-meteor-accounts-with-apollo-and-react-df3c89b46b17#.znozw2zbd)
 
+## Example Usage
+
+```js
+import React, { Component } from 'react';
+import Accounts from 'meteor-apollo-accounts';
+import client from './ApolloClient'; // instance of apollo-client
+
+Accounts.initWithClient(client); //do this only once
+
+Accounts.onLogin(() => {
+  console.log(Accounts.userId());
+});
+
+export default class Login extends Component {
+  constructor() {
+    this.state = {
+      username: '',
+      password: ''
+    };
+    this.login = this.login.bind(this);
+    this.onUsernameChange = this.onUsernameChange.bind(this);
+    this.onPwdChange = this.onPwdChange.bind(this);
+  }
+  
+  login(e) {
+    const { username, password } = this.state;
+    e.preventDefault();
+    Accounts.loginWithPassword({ username, password })
+      .catch(function(err) {
+        console.log("Error logging in", err);
+      });
+  }
+  
+  onUsernameChange(event) {
+    this.setState({username: event.target.value});
+  }
+  
+  onPwdChange(event) {
+    this.setState({password: event.target.value});
+  }
+  
+  render() {
+    const { username, password } = this.state;
+    return (
+      <div>
+        <form>
+          <div className="form-group">
+            <input type="text" value={username} onChange={this.onUsernameChange} placeholder="Username" />
+            <input type="password" value={password} onChange={this.onPasswordChage} placeholder="Password" />
+          </div>
+          <button type="submit" onClick={this.login}>Login</button>
+        </form>
+      </div>
+    )
+  }
+}
+
+```
+
 ## Methods
 
 Meteor accounts methods, client side only. All methods are promises.
@@ -62,9 +121,7 @@ Meteor accounts methods, client side only. All methods are promises.
 Log the user in with a password.
 
 ```js
-import { loginWithPassword } from 'meteor-apollo-accounts'
-
-loginWithPassword({username, email, password, plainPassword}, apollo)
+Accounts.loginWithPassword({username, email, password, plainPassword})
 ```
 
 - ```username```: Optional. The user's username.
@@ -75,144 +132,56 @@ loginWithPassword({username, email, password, plainPassword}, apollo)
 
 - ```plainPassword```: Optional. The plain user's password. Recommended only for use in testing tools, like GraphiQL.
 
-- ```apollo```: Apollo client instance.
-
-#### changePassword
-
-Change the current user's password. Must be logged in.
-
-```js
-import { changePassword } from 'meteor-apollo-accounts'
-
-changePassword({oldPassword, newPassword}, apollo)
-```
-
-- ```oldPassword```: The user's current password. This is not sent in plain text over the wire.
-
-- ```newPassword```: A new password for the user. This is not sent in plain text over the wire.
-
-- ```apollo```: Apollo client instance.
 
 #### logout
 
 Log the user out.
 
 ```js
-import { logout } from 'meteor-apollo-accounts'
-
-logout(apollo)
+Accounts.logout()
 ```
 
-- ```apollo```: Apollo client instance.
+#### onLogin
 
-#### createUser
-
-Create a new user.
+Register a function to be called when a user logged in
 
 ```js
-import { createUser } from 'meteor-apollo-accounts'
-
-createUser({username, email, password, profile}, apollo)
-```
-
-- ```username```: A unique name for this user.
-
-- ```email```: The user's email address.
-
-- ```password```: The user's password. This is not sent in plain text over the wire.
-
-- ```profile```: The profile object based on the ```UserProfileInput``` input type.
-
-- ```apollo```: Apollo client instance.
-
-#### verifyEmail
-
-Marks the user's email address as verified. Logs the user in afterwards.
-
-```js
-import { verifyEmail } from 'meteor-apollo-accounts'
-
-verifyEmail({token}, apollo)
-```
-
-- ```token```: The token retrieved from the verification URL.
-
-- ```apollo```: Apollo client instance.
-
-
-#### forgotPassword
-
-Request a forgot password email.
-
-```js
-import { forgotPassword } from 'meteor-apollo-accounts'
-
-forgotPassword({email}, apollo)
-```
-
-- ```email```: The email address to send a password reset link.
-
-- ```apollo```: Apollo client instance.
-
-#### resetPassword
-
-Reset the password for a user using a token received in email. Logs the user in afterwards.
-
-```js
-import { resetPassword } from 'meteor-apollo-accounts'
-
-resetPassword({newPassword, token}, apollo)
-```
-
-- ```newPassword```: A new password for the user. This is not sent in plain text over the wire.
-
-- ```token```: The token retrieved from the reset password URL.
-
-- ```apollo```: Apollo client instance.
-
-
-#### loginWithFacebook
-
-Logins the user with a facebook accessToken
-
-```js
-import { loginWithFacebook } from 'meteor-apollo-accounts'
-
-loginWithFacebook({accessToken}, apollo)
-```
-
-- ```accessToken```: A Facebook accessToken. It's recommended to use
-https://github.com/keppelen/react-facebook-login to fetch the accessToken.
-
-- ```apollo```: Apollo client instance.
-
-#### loginWithGoogle
-
-Logins the user with a google accessToken
-
-```js
-import { loginWithGoogle } from 'meteor-apollo-accounts'
-
-loginWithGoogle({accessToken}, apollo)
-```
-
-- ```accessToken```: A Google accessToken. It's recommended to use
-https://github.com/anthonyjgrove/react-google-login to fetch the accessToken.
-
-- ```apollo```: Apollo client instance.
-
-
-#### onTokenChange
-
-Register a function to be called when a user is logged in or out.
-
-```js
-import { onTokenChange } from 'meteor-apollo-accounts'
-
-onTokenChange(function () {
-  console.log('token did change')
-  apollo.resetStore()
+Accounts.onLogin(() => {
+  console.log('Current User: ', Accounts.userId())
+  ...
+  // Fetch data, change routes, etc
 })
+```
+
+#### onLoginFailure
+
+Register a function to be called when a login attempt is failed
+
+```js
+Accounts.onLoginFailure(() => {
+  console.log('Login Failed');
+  ...
+  // Set route to login page, reset store, etc
+})
+```
+
+#### onLogout
+
+Register a function to be called when a user logs out
+
+```js
+Accounts.onLogout(() => {
+  console.log('User Logged Out');
+  ...
+  // Set route to login page, reset store, etc
+})
+```
+
+#### loggingIn
+
+Returns true if a login method (such as Accounts.loginWithPassword, Accounts.loginWithFacebook, or Accounts.createUser) is currently in progress.
+```js
+console.log('Currently logging in? : ', Accounts.loggingIn())
 ```
 
 #### userId
@@ -220,13 +189,92 @@ onTokenChange(function () {
 Returns the id of the logged in user.
 
 ```js
-import { userId } from 'meteor-apollo-accounts'
-
-async function () {
-  console.log('The user id is:', await userId())
-}
-
+console.log('The user id is:', Accounts.userId())
 ```
+
+#### changePassword
+
+Change the current user's password. Must be logged in.
+
+```js
+Accounts.changePassword({oldPassword, newPassword})
+```
+
+- `oldPassword`: The user's current password. This is not sent in plain text over the wire.
+
+- `newPassword`: A new password for the user. This is not sent in plain text over the wire.
+
+
+#### createUser
+
+Create a new user.
+
+```js
+Accounts.createUser({username, email, password, profile})
+```
+
+- `username`: A unique name for this user.
+
+- `email`: The user's email address.
+
+- `password`: The user's password. This is not sent in plain text over the wire.
+
+- `profile`: The profile object based on the ```UserProfileInput``` input type.
+
+
+#### verifyEmail
+
+Marks the user's email address as verified. Logs the user in afterwards.
+
+```js
+Accounts.verifyEmail({token})
+```
+
+- ```token```: The token retrieved from the verification URL.
+
+#### forgotPassword
+
+Request a forgot password email.
+
+```js
+Accounts.forgotPassword({email})
+```
+
+- ```email```: The email address to send a password reset link.
+
+#### resetPassword
+
+Reset the password for a user using a token received in email. Logs the user in afterwards.
+
+```js
+Accounts.resetPassword({newPassword, token})
+```
+
+- ```newPassword```: A new password for the user. This is not sent in plain text over the wire.
+
+- ```token```: The token retrieved from the reset password URL.
+
+#### loginWithFacebook
+
+Logins the user with a facebook accessToken
+
+```js
+Accounts.loginWithFacebook({accessToken})
+```
+
+- ```accessToken```: A Facebook accessToken. It's recommended to use
+https://github.com/keppelen/react-facebook-login to fetch the accessToken.
+
+#### loginWithGoogle
+
+Logins the user with a google accessToken
+
+```js
+Accounts.loginWithGoogle({accessToken})
+```
+
+- ```accessToken```: A Google accessToken. It's recommended to use
+https://github.com/anthonyjgrove/react-google-login to fetch the accessToken.
 
 
 ### React-Native usage
