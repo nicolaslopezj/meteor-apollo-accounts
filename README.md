@@ -305,35 +305,58 @@ import {
   AsyncStorage
 } from 'react-native';
 
-import { loginWithPassword, userId, setTokenStore} from 'meteor-apollo-accounts'
+import Accounts, { USER_ID_KEY, TOKEN_KEY, TOKEN_EXPIRES_KEY } from 'meteor-apollo-accounts';
+import client from './ApolloClient'; // Your instance of apollo client
 
-// Then you'll have to define a TokenStore for your user data using setTokenStore 
-// (for instance when your component is mounted):
-setTokenStore({
-  set: async function ({userId, token, tokenExpires}) {
-    await AsyncStorage.setItem('Meteor.userId', userId)
-    await AsyncStorage.setItem('Meteor.loginToken', token)
-    // AsyncStorage doesn't support Date type so we'll store it as a String
-    await AsyncStorage.setItem('Meteor.loginTokenExpires', tokenExpires.toString())
+// Then you'll have to define a TokenStore for your user data using setTokenStore.
+// This should be done before calling Accounts.initWithClient:
+Accounts.setTokenStore({
+  async set({ userId, token, tokenExpires }) {
+    return AsyncStorage.multiSet([
+      [USER_ID_KEY, userId],
+      [TOKEN_KEY, token],
+      [TOKEN_EXPIRES_KEY, tokenExpires.toString()]
+    ]);
   },
-  get: async function () {
-    return {
-      userId: await AsyncStorage.getItem('Meteor.userId'),
-      token: await AsyncStorage.getItem('Meteor.loginToken'),
-      tokenExpires: await AsyncStorage.getItem('Meteor.loginTokenExpires')
-    }
+  async get() {
+    const stores = await AsyncStorage.multiGet([
+      USER_ID_KEY,
+      TOKEN_KEY,
+      TOKEN_EXPIRES_KEY
+    ]);
+
+    const userId = stores[0][1];
+    const token = stores[1][1];
+    const tokenExpires = stores[2][1];
+
+    return { userId, token, tokenExpires };
+  },
+  async remove() {
+    return AsyncStorage.multiRemove([
+      USER_ID_KEY,
+      TOKEN_KEY,
+      TOKEN_EXPIRES_KEY
+    ]);
   }
-})
+});
+
+// Make sure to initialize before calling anything else in Accounts:
+Accounts.initWithClient(client);
+
 
 // Finally, you'll be able to use asynchronously any method from the library:
+
+Accounts.onLogin(() => {
+  console.log(Accounts.userId());
+});
+
 async login (event) {
   event.preventDefault();
 
   try {
-    const id_ = await loginWithPassword({ "email", "password" }, this.client)
-    this.client.resetStore()
+    const id = await Accounts.loginWithPassword({ "email", "password" })
   } catch (error) {
-
+    console.log("Error logging in: ", error);
   }
 }
 
