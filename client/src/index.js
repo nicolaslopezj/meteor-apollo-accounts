@@ -14,6 +14,7 @@ import userId from './userId'
 import {
   initWithClient,
   setTokenStore,
+  getLoginToken,
   onLogin,
   onLoginFailure,
   onLogout,
@@ -39,6 +40,7 @@ export {
   userId,
   initWithClient,
   setTokenStore,
+  getLoginToken,
   onLogin,
   onLoginFailure,
   onLogout,
@@ -63,6 +65,7 @@ export default {
   userId,
   initWithClient,
   setTokenStore,
+  getLoginToken,
   onLogin,
   onLoginFailure,
   onLogout,
