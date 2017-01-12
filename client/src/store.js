@@ -1,3 +1,4 @@
+import gql from 'graphql-tag'
 import Events from './Events'
 
 export const USER_ID_KEY = 'Meteor.userId'
@@ -35,6 +36,7 @@ export const setTokenStore = function (newStore) {
 
 export const initWithClient = function (apolloClientInstance) {
   apollo = apolloClientInstance
+  _loadInitialUser()
 }
 
 export const getClient = function () {
@@ -67,7 +69,50 @@ export const handleLogout = async function () {
 }
 
 export const _storeLoginToken = async function (userId, token, tokenExpires) {
-  await tokenStore.set({userId, token, tokenExpires})
+  return tokenStore.set({userId, token, tokenExpires})
+}
+
+const _loadInitialUser = async function () {
+  var token = null
+  try {
+    token = await tokenStore.get().token
+  } catch (error) {
+    console.warn('Token Store error: ' + error.message)
+  }
+  return _loginWithToken(token)
+}
+
+const _loginWithToken = async function (token) {
+  _tokenSaved = token
+
+  if (token) {
+    startLoggingIn()
+    let result
+    try {
+      result = await getClient().mutate({
+        mutation: gql`
+        mutation loginWithToken ($token: String!) {
+          loginWithToken (token: $token) {
+            id
+            token
+            tokenExpires
+          }
+        }
+        `,
+        variables: {
+          token
+        }
+      })
+    } catch (err) {
+      return handleLoginCallback(err)
+    } finally {
+      endLoggingIn()
+    }
+
+    return handleLoginCallback(null, result.data.loginWithToken)
+  } else {
+    endLoggingIn()
+  }
 }
 
 export const loggingIn = function () {
