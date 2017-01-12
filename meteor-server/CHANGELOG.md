@@ -1,5 +1,9 @@
 # Changelog
 
+### vNEXT
+
+- Added `loginWithToken` mutation
+
 ### v3.0.1
 
 - Fix bug with ```tmeasday:check-npm-versions```.
