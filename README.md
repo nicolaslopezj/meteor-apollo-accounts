@@ -371,3 +371,4 @@ async login (event) {
 - [@nicolaslopezj](https://github.com/nicolaslopezj)
 - [@janikvonrotz](https://github.com/janikvonrotz)
 - [@dbrrt](https://github.com/dbrrt)
+- [@hammadj](https://github.com/hammadj)
