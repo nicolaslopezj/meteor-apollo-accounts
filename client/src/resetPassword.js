@@ -1,23 +1,27 @@
 import gql from 'graphql-tag'
-import {storeLoginToken} from './store'
+import {handleLoginCallback, getClient} from './store'
 import hashPassword from './hashPassword'
 
-export default async function ({newPassword, token}, apollo) {
-  const result = await apollo.mutate({
-    mutation: gql`mutation resetPassword($newPassword: HashedPassword!, $token: String!) {
-      resetPassword(newPassword: $newPassword, token: $token) {
-        id
+export default async function ({newPassword, token}) {
+  let result
+  try {
+    result = await getClient().mutate({
+      mutation: gql`
+      mutation resetPassword($newPassword: HashedPassword!, $token: String!) {
+        resetPassword(newPassword: $newPassword, token: $token) {
+          id
+          token
+          tokenExpires
+        }
+      }`,
+      variables: {
+        newPassword: hashPassword(newPassword),
         token
-        tokenExpires
       }
-    }`,
-    variables: {
-      newPassword: hashPassword(newPassword),
-      token
-    }
-  })
+    })
+  } catch (err) {
+    return handleLoginCallback(err)
+  }
 
-  const {id, token: loginToken, tokenExpires} = result.data.resetPassword
-  await storeLoginToken(id, loginToken, new Date(tokenExpires))
-  return id
+  return handleLoginCallback(null, result.data.resetPassword)
 }
