@@ -1,8 +1,9 @@
 import hashPassword from './hashPassword'
 import gql from 'graphql-tag'
-import {handleLoginCallback, getClient} from './store'
+import {handleLoginCallback, getClient, startLoggingIn, endLoggingIn} from './store'
 
 export default async function ({username, email, password, profile}) {
+  startLoggingIn()
   let result
   try {
     result = await getClient().mutate({
@@ -24,6 +25,8 @@ export default async function ({username, email, password, profile}) {
     })
   } catch (err) {
     return handleLoginCallback(err)
+  } finally {
+    endLoggingIn()
   }
 
   return handleLoginCallback(null, result.data.createUser)

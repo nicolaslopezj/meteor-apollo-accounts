@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import {handleLoginCallback, getClient} from '../store'
+import {handleLoginCallback, getClient, startLoggingIn, endLoggingIn} from '../store'
 
 /**
  * Pass the accessToken
@@ -7,6 +7,7 @@ import {handleLoginCallback, getClient} from '../store'
  */
 
 export default async function ({accessToken}) {
+  startLoggingIn()
   let result
   try {
     result = await getClient().mutate({
@@ -25,6 +26,8 @@ export default async function ({accessToken}) {
     })
   } catch (err) {
     return handleLoginCallback(err)
+  } finally {
+    endLoggingIn()
   }
 
   return handleLoginCallback(null, result.data.loginWithGoogle)
