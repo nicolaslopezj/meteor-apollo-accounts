@@ -21,7 +21,7 @@ import {
   loggingIn,
   TOKEN_EXPIRES_KEY,
   TOKEN_KEY,
-  USER_ID_KEY,
+  USER_ID_KEY
 } from './store'
 
 export {
@@ -47,7 +47,7 @@ export {
   loggingIn,
   TOKEN_EXPIRES_KEY,
   TOKEN_KEY,
-  USER_ID_KEY,
+  USER_ID_KEY
 }
 
 export default {
@@ -72,5 +72,5 @@ export default {
   loggingIn,
   TOKEN_EXPIRES_KEY,
   TOKEN_KEY,
-  USER_ID_KEY,
+  USER_ID_KEY
 }

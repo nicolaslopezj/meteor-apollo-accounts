@@ -76,7 +76,7 @@ const _loadInitialUser = async function () {
   let token = null
   try {
     const store = await tokenStore.get()
-    token = store.token;
+    token = store.token
   } catch (error) {
     console.warn('Token Store error: ' + error.message)
   }
