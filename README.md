@@ -8,7 +8,7 @@ This package uses the Meteor Accounts methods in GraphQL, it's compatible with t
 
 ## Installing
 
-### Install on Meteor server
+## Install on Meteor server
 
 ```sh
 meteor add nicolaslopezj:apollo-accounts
@@ -37,7 +37,7 @@ const executableSchema = makeExecutableSchema(schema)
 ```
 
 
-### Install on your apollo app
+## Install on your apollo app
 
 May or may not be the same app.
 
@@ -45,15 +45,15 @@ May or may not be the same app.
 npm install meteor-apollo-accounts
 ```
 
-## Examples
+### Examples
 
 - [janikvonrotz/meteor-apollo-accounts-example](https://github.com/janikvonrotz/meteor-apollo-accounts-example): Meteor client and server side.
 - [orionsoft/server-boilerplate](https://github.com/orionsoft/server-boilerplate): Large Meteor server side only starter app.
 
-## Tutorials
+### Tutorials
 - [Using Meteor With Apollo and React](https://blog.orionsoft.io/using-meteor-accounts-with-apollo-and-react-df3c89b46b17#.znozw2zbd)
 
-## Example Usage
+### Example Usage
 
 ```js
 import React, { Component } from 'react';
@@ -112,7 +112,7 @@ export default class Login extends Component {
 
 ```
 
-## Methods
+### Methods
 
 Meteor accounts methods, client side only. All methods are promises.
 
