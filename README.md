@@ -116,6 +116,22 @@ export default class Login extends Component {
 
 Meteor accounts methods, client side only. All methods are promises.
 
+#### initWithClient
+
+Initialize the accounts system with an instance of Apollo Client. You only need to do this once in your app, typically upon startup.
+
+```js
+import ApolloClient from 'apollo-client';
+import Accounts from 'meteor-apollo-accounts';
+
+const client = new ApolloClient();
+
+Accounts.initWithClient(client);
+```
+
+- ```client```: Your instance of Apollo Client
+
+
 #### loginWithPassword
 
 Log the user in with a password.
@@ -159,7 +175,7 @@ Register a function to be called when a login attempt is failed
 
 ```js
 Accounts.onLoginFailure(() => {
-  console.log('Login Failed');
+  console.log('Login Failed')
   ...
   // Set route to login page, reset store, etc
 })
@@ -171,7 +187,7 @@ Register a function to be called when a user logs out
 
 ```js
 Accounts.onLogout(() => {
-  console.log('User Logged Out');
+  console.log('User Logged Out')
   ...
   // Set route to login page, reset store, etc
 })
