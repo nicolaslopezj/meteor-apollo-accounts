@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import {getLoginToken, resetStore, getClient} from './store'
+import {getLoginToken, handleLogout, getClient} from './store'
 
 export default async function () {
   const result = await getClient().mutate({
@@ -15,6 +15,6 @@ export default async function () {
     }
   })
 
-  await resetStore()
+  await handleLogout()
   return result.data.logout.success
 }
