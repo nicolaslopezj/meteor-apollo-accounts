@@ -73,9 +73,10 @@ export const _storeLoginToken = async function (userId, token, tokenExpires) {
 }
 
 const _loadInitialUser = async function () {
-  var token = null
+  let token = null
   try {
-    token = await tokenStore.get().token
+    const store = await tokenStore.get()
+    token = store.token;
   } catch (error) {
     console.warn('Token Store error: ' + error.message)
   }
@@ -84,7 +85,6 @@ const _loadInitialUser = async function () {
 
 const _loginWithToken = async function (token) {
   _tokenSaved = token
-
   if (token) {
     startLoggingIn()
     let result
