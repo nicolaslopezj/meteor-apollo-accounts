@@ -293,6 +293,79 @@ Accounts.loginWithGoogle({accessToken})
 https://github.com/anthonyjgrove/react-google-login to fetch the accessToken.
 
 
+
+
+### React-Native usage
+
+```js
+
+//First you'll need to import the Storage library that you'll use to store the user details (userId, tokens...),
+// AsyncStorage is highly recommended.
+
+import {
+  ...
+  AsyncStorage
+} from 'react-native';
+
+import Accounts, { USER_ID_KEY, TOKEN_KEY, TOKEN_EXPIRES_KEY } from 'meteor-apollo-accounts';
+import client from './ApolloClient'; // Your instance of apollo client
+
+// Then you'll have to define a TokenStore for your user data using setTokenStore.
+// This should be done before calling Accounts.initWithClient:
+Accounts.setTokenStore({
+  async set({ userId, token, tokenExpires }) {
+    return AsyncStorage.multiSet([
+      [USER_ID_KEY, userId],
+      [TOKEN_KEY, token],
+      [TOKEN_EXPIRES_KEY, tokenExpires.toString()]
+    ]);
+  },
+  async get() {
+    const stores = await AsyncStorage.multiGet([
+      USER_ID_KEY,
+      TOKEN_KEY,
+      TOKEN_EXPIRES_KEY
+    ]);
+
+    const userId = stores[0][1];
+    const token = stores[1][1];
+    const tokenExpires = stores[2][1];
+
+    return { userId, token, tokenExpires };
+  },
+  async remove() {
+    return AsyncStorage.multiRemove([
+      USER_ID_KEY,
+      TOKEN_KEY,
+      TOKEN_EXPIRES_KEY
+    ]);
+  }
+});
+
+// Make sure to initialize before calling anything else in Accounts:
+Accounts.initWithClient(client);
+
+
+// Finally, you'll be able to use asynchronously any method from the library :
+
+Accounts.onLogin(() => {
+  console.log(Accounts.userId());
+});
+
+async login (event) {
+  event.preventDefault();
+
+  try {
+    const id = await Accounts.loginWithPassword({ "email", "password" })
+  } catch (error) {
+    console.log("Error logging in: ", error);
+  }
+}
+
+```
+
+
+
 ## Contributors
 
 - [@nicolaslopezj](https://github.com/nicolaslopezj)
