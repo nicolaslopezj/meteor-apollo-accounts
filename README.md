@@ -243,7 +243,8 @@ import {
 
 import { loginWithPassword, userId, setTokenStore} from 'meteor-apollo-accounts'
 
-// Then you'll have to define a TokenStore for your user data using setTokenStore (for instance when your component is mounted) :
+// Then you'll have to define a TokenStore for your user data using setTokenStore 
+(for instance when your component is mounted) :
 setTokenStore({
   set: async function ({userId, token, tokenExpires}) {
     await AsyncStorage.setItem('Meteor.userId', userId)
@@ -281,3 +282,4 @@ async login (event) {
 - [@nicolaslopezj](https://github.com/nicolaslopezj)
 - [@janikvonrotz](https://github.com/janikvonrotz)
 - [@dbrrt](https://github.com/dbrrt)
+- [@hammadj](https://github.com/hammadj)
