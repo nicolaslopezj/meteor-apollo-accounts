@@ -261,7 +261,7 @@ setTokenStore({
   }
 })
 
-// Finally, you'll be able to use asynchronously any method from the library :
+// Finally, you'll be able to use asynchronously any method from the library:
 async login (event) {
   event.preventDefault();
 
