@@ -56,9 +56,35 @@ npm install meteor-apollo-accounts
 ### Example Usage
 
 ```js
+// client.js
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import Accounts from 'meteor-apollo-accounts';
+
+const networkInterface = createNetworkInterface({ uri: 'localhost:3000/graphql' });
+
+networkInterface.use([{
+  applyMiddleware(req, next) {
+    if (!req.options.headers) {
+      req.options.headers = {};
+    }
+    req.options.headers.authorization = Accounts.getLoginToken() || null;
+    next();
+  }
+}]);
+
+const client = new ApolloClient({
+  networkInterface,
+  dataIdFromObject: (result) => result._id
+});
+
+export default client;
+```
+
+```js
+// Login.jsx
 import React, { Component } from 'react';
 import Accounts from 'meteor-apollo-accounts';
-import client from './ApolloClient'; // instance of apollo-client
+import client from './client'; // instance of apollo-client
 
 Accounts.initWithClient(client); //do this only once
 
