@@ -80,25 +80,25 @@ const _loadInitialUser = async function () {
   } catch (error) {
     console.warn('Token Store error: ' + error.message)
   }
-  return _loginWithToken(token)
+
+  return _checkLogin(token)
 }
 
-const _loginWithToken = async function (token) {
+const _checkLogin = async function (token) {
   _tokenSaved = token
   if (token) {
     startLoggingIn()
     let result
     try {
-      result = await getClient().mutate({
-        mutation: gql`
-        mutation loginWithToken ($token: String!) {
-          loginWithToken (token: $token) {
-            id
-            token
-            tokenExpires
+      result = await getClient().query({
+        query: gql`
+          query checkToken ($token: String!) {
+            checkToken(token: $token) {
+              success
+              userId
+            }
           }
-        }
-        `,
+          `,
         variables: {
           token
         }
@@ -109,7 +109,16 @@ const _loginWithToken = async function (token) {
       endLoggingIn()
     }
 
-    return handleLoginCallback(null, result.data.loginWithToken)
+    if (
+      result.data &&
+      result.data.checkToken &&
+      result.data.checkToken.success &&
+      result.data.checkToken.userId
+    ) {
+      Events.notify('onLogin')
+      _userIdSaved = result.data.checkToken.userId
+      return _userIdSaved
+    }
   } else {
     endLoggingIn()
   }
