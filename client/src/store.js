@@ -92,16 +92,13 @@ const _checkLogin = async function (token) {
     try {
       result = await getClient().query({
         query: gql`
-          query checkToken ($token: String!) {
-            checkToken(token: $token) {
+          query checkToken {
+            checkToken {
               success
               userId
             }
           }
-          `,
-        variables: {
-          token
-        }
+        `,
       })
     } catch (err) {
       return handleLoginCallback(err)
