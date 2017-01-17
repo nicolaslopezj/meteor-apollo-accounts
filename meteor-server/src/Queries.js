@@ -3,8 +3,8 @@ export default function (options) {
 
   queries.push(`
   type Query {
-    # Returns true if token is valid
-    checkToken(token: String!): CheckTokenResponse
+    # Returns success: true and userId if auth token is valid
+    checkToken: CheckTokenResponse
   }`)
 
   return queries
