@@ -1,9 +1,9 @@
 import checkToken from './checkToken'
 
-const resolvers = {
+const Query = {
   checkToken
 }
 
 export default function (options) {
-  return { Query: resolvers }
+  return { Query }
 }
