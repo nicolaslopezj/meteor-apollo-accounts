@@ -7,6 +7,7 @@ export default async function (root, { token }, {userId}) {
     'services.resume.loginTokens.hashedToken' : Accounts._hashLoginToken(token)
   });
   return {
-    success: !!user
-  }
+    success: !!user,
+    userId: user._id || null
+  };
 }

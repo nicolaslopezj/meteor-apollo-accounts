@@ -4,7 +4,7 @@ export default function (options) {
   queries.push(`
   type Query {
     # Returns true if token is valid
-    checkToken(token: String!): SuccessResponse
+    checkToken(token: String!): CheckTokenResponse
   }`)
 
   return queries

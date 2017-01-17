@@ -21,6 +21,13 @@ type SuccessResponse {
   success: Boolean
 }
 
+type CheckTokenResponse {
+  # True if token was valid
+  success: Boolean
+  # userId of logged in user, null if not logged in
+  userId: String
+}
+
 # A hashsed password
 input HashedPassword {
   # The hashed password
