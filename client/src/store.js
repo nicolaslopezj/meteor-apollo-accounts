@@ -112,8 +112,8 @@ const _checkLogin = async function (token) {
       result.data.checkToken.success &&
       result.data.checkToken.userId
     ) {
-      Events.notify('onLogin')
       _userIdSaved = result.data.checkToken.userId
+      Events.notify('onLogin')
       return _userIdSaved
     }
   } else {
