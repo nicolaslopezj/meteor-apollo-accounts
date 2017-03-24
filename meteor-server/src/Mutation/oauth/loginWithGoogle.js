@@ -13,7 +13,7 @@ const handleAuthFromAccessToken = function ({accessToken}) {
 
   return {
     serviceName: 'google',
-    serviceData: serviceData,
+    serviceData,
     options: {profile: {name: identity.name}}
   }
 }

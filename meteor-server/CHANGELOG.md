@@ -1,5 +1,9 @@
 # Changelog
 
+### v3.1.0
+
+- Use http instead of meteor to make Facebook login.
+
 ### v3.0.1
 
 - Fix bug with ```tmeasday:check-npm-versions```.
