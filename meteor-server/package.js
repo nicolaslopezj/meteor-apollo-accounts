@@ -22,7 +22,7 @@ Package.onUse(function (api) {
     'npm-bcrypt',
     'random',
     'ecmascript',
-    'facebook',
+    'facebook-oauth',
     'http',
     'random',
     'oauth',
