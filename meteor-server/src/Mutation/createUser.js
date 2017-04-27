@@ -3,7 +3,6 @@ import hashPassword from './hashPassword'
 import {Meteor} from 'meteor/meteor'
 
 export default async function (root, options, context) {
-  console.log('hello world')
   Meteor._nodeCodeMustBeInFiber()
   if (!options.password && !options.plainPassword) {
     throw new Error('Password is required')
