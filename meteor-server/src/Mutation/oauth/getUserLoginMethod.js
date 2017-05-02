@@ -7,7 +7,11 @@ export default function (email) {
   for (const key in services) {
     if (key === 'email') continue
     if (key === 'resume') continue
-    list.push(key)
+    if (key === 'password' && !services.password.bcrypt) {
+      list.push('no-password')
+    } else {
+      list.push(key)
+    }
   }
   return list.join(', ')
 }

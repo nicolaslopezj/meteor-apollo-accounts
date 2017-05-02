@@ -2,6 +2,7 @@ import callMethod from '../../callMethod'
 import getUserLoginMethod from './getUserLoginMethod'
 import {Random} from 'meteor/random'
 import {OAuth} from 'meteor/oauth'
+import {Meteor} from 'meteor/meteor'
 
 export default function (handleAuthFromAccessToken) {
   return async function (root, params, context) {
@@ -19,7 +20,9 @@ export default function (handleAuthFromAccessToken) {
       if (error.reason === 'Email already exists.') {
         const email = oauthResult.serviceData.email || oauthResult.serviceData.emailAddress
         const method = getUserLoginMethod(email)
-        if (method) {
+        if (method === 'no-password') {
+          throw new Meteor.Error('no-password', 'User has no password set, go to forgot password')
+        } else if (method) {
           throw new Error(`User is registered with ${method}.`)
         } else {
           throw new Error('User has no login methods')
