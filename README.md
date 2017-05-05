@@ -283,3 +283,5 @@ async login (event) {
 - [@janikvonrotz](https://github.com/janikvonrotz)
 - [@dbrrt](https://github.com/dbrrt)
 - [@hammadj](https://github.com/hammadj)
+
+> Project sponsored by [Orion Hosting](https://orion.hosting/?utm_source=github-apollo-accounts) - Hosting for Meteor
