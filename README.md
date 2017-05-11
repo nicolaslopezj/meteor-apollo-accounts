@@ -4,7 +4,7 @@ A implementation of Meteor Accounts only in GraphQL with Apollo.
 
 This package uses the Meteor Accounts methods in GraphQL, it's compatible with the accounts you have saved in your database and you may use apollo-accounts and Meteor's DPP accounts at the same time.
 
-> Sorry for all the api changes, now we will use [graphql-loader](https://github.com/orionsoft/graphql-loader) for a long term solution.
+> Project sponsored by [Orion Hosting](https://orion.hosting/?utm_source=github-apollo-accounts) - Hosting for Meteor
 
 ## Installing
 
