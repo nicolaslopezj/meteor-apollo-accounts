@@ -2,7 +2,7 @@
 
 Package.describe({
   name: 'nicolaslopezj:apollo-accounts',
-  version: '3.1.3',
+  version: '3.2.0',
   // Brief, one-line summary of the package.
   summary: 'Meteor accounts in GraphQL',
   // URL to the Git repository containing the source code for this package.
@@ -22,21 +22,11 @@ Package.onUse(function (api) {
     'npm-bcrypt',
     'random',
     'ecmascript',
-    'facebook',
     'http',
     'random',
     'oauth',
     'service-configuration'
   ], 'server')
-
-  // Optional login methods
-  api.use([
-    'accounts-password',
-    'accounts-facebook',
-    'accounts-google',
-    'pauli:accounts-linkedin@1.3.1',
-    'jonperl:accounts-linkedin@1.1.0'
-  ], {weak: true})
 
   api.mainModule('src/index.js', 'server')
 })

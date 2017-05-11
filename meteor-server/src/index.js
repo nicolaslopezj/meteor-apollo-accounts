@@ -8,7 +8,11 @@ import {loadSchema} from 'graphql-loader'
 
 const initAccounts = function (givenOptions) {
   const defaultOptions = {
-    CreateUserProfileInput: 'name: String'
+    CreateUserProfileInput: 'name: String',
+    loginWithFacebook: false,
+    loginWithGoogle: false,
+    loginWithLinkedIn: false,
+    loginWithPassword: true
   }
   const options = {
     ...defaultOptions,

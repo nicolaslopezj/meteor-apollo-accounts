@@ -24,9 +24,13 @@ import {initAccounts} from 'meteor/nicolaslopezj:apollo-accounts'
 import typeDefs from './schema'
 import resolvers from './resolvers'
 
-const options = {}
 // Load all accounts related resolvers and type definitions into graphql-loader
-initAccounts(options)
+initAccounts({
+  loginWithFacebook: false,
+  loginWithGoogle: false,
+  loginWithLinkedIn: false,
+  loginWithPassword: true
+})
 
 // Load all your resolvers and type definitions into graphql-loader
 loadSchema({typeDefs, resolvers})
@@ -243,7 +247,7 @@ import {
 
 import { loginWithPassword, userId, setTokenStore} from 'meteor-apollo-accounts'
 
-// Then you'll have to define a TokenStore for your user data using setTokenStore 
+// Then you'll have to define a TokenStore for your user data using setTokenStore
 // (for instance when your component is mounted):
 setTokenStore({
   set: async function ({userId, token, tokenExpires}) {

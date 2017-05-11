@@ -1,20 +1,18 @@
-export default function (service) {
-  const Package = global.Package
-
+export default function (options, service) {
   if (service === 'facebook') {
-    return !!Package['accounts-facebook']
+    return options.loginWithFacebook
   }
 
   if (service === 'google') {
-    return !!Package['accounts-google']
+    return options.loginWithGoogle
   }
 
   if (service === 'password') {
-    return !!Package['accounts-password']
+    return options.loginWithPassword
   }
 
   if (service === 'linkedin') {
-    return !!Package['pauli:accounts-linkedin'] || !!Package['jonperl:accounts-linkedin']
+    return options.loginWithLinkedIn
   }
 
   return false

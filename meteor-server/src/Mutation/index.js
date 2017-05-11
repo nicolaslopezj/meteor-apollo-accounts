@@ -9,21 +9,21 @@ import resetPassword from './resetPassword'
 import oauth from './oauth'
 import hasService from './oauth/hasService'
 
-const resolvers = {
-  logout,
-  verifyEmail,
-  resendVerificationEmail,
-  ...oauth
-}
-
-if (hasService('password')) {
-  resolvers.loginWithPassword = loginWithPassword
-  resolvers.changePassword = changePassword
-  resolvers.createUser = createUser
-  resolvers.forgotPassword = forgotPassword
-  resolvers.resetPassword = resetPassword
-}
-
 export default function (options) {
+  const resolvers = {
+    logout,
+    verifyEmail,
+    resendVerificationEmail,
+    ...oauth(options)
+  }
+
+  if (hasService(options, 'password')) {
+    resolvers.loginWithPassword = loginWithPassword
+    resolvers.changePassword = changePassword
+    resolvers.createUser = createUser
+    resolvers.forgotPassword = forgotPassword
+    resolvers.resetPassword = resetPassword
+  }
+
   return {Mutation: resolvers}
 }

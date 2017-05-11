@@ -3,7 +3,7 @@ import hasService from './Mutation/oauth/hasService'
 export default function (options) {
   const mutations = []
 
-  if (hasService('password')) {
+  if (hasService(options, 'password')) {
     mutations.push(`
     type Mutation {
       # Log the user in with a password.
@@ -35,7 +35,7 @@ export default function (options) {
     resendVerificationEmail (email: String): SuccessResponse
   }`)
 
-  if (hasService('facebook')) {
+  if (hasService(options, 'facebook')) {
     mutations.push(`
     type Mutation {
       # Login the user with a facebook access token
@@ -43,7 +43,7 @@ export default function (options) {
     }`)
   }
 
-  if (hasService('google')) {
+  if (hasService(options, 'google')) {
     mutations.push(`
     type Mutation {
       # Login the user with a facebook access token
@@ -51,7 +51,7 @@ export default function (options) {
     }`)
   }
 
-  if (hasService('linkedin')) {
+  if (hasService(options, 'linkedin')) {
     mutations.push(`
     type Mutation {
       # Login the user with a facebook access token

@@ -3,18 +3,20 @@ import loginWithGoogle from './loginWithGoogle'
 import loginWithLinkedIn from './loginWithLinkedIn'
 import hasService from './hasService'
 
-const oauth = {}
+export default function (options) {
+  const oauth = {}
 
-if (hasService('facebook')) {
-  oauth.loginWithFacebook = loginWithFacebook
+  if (hasService(options, 'facebook')) {
+    oauth.loginWithFacebook = loginWithFacebook
+  }
+
+  if (hasService(options, 'google')) {
+    oauth.loginWithGoogle = loginWithGoogle
+  }
+
+  if (hasService(options, 'linkedin')) {
+    oauth.loginWithLinkedIn = loginWithLinkedIn
+  }
+
+  return oauth
 }
-
-if (hasService('google')) {
-  oauth.loginWithGoogle = loginWithGoogle
-}
-
-if (hasService('linkedin')) {
-  oauth.loginWithLinkedIn = loginWithLinkedIn
-}
-
-export default oauth
