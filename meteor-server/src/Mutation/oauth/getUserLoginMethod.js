@@ -13,5 +13,6 @@ export default function (email) {
       list.push(key)
     }
   }
-  return list.join(', ')
+  const allowedServices = [...Accounts.oauth.serviceNames(), 'password']
+  return list.filter(service => allowedServices.indexOf(service) !== -1).join(', ')
 }
