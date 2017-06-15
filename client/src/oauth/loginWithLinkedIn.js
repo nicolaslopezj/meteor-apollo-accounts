@@ -1,26 +1,29 @@
 import gql from 'graphql-tag'
-import {storeLoginToken} from '../store'
+import {handleLoginCallback, getClient} from '../store'
 
 /**
  * Pass the accessToken
  * It's recommended to use https://github.com/keppelen/react-facebook-login
  */
 
-export default async function ({code, redirectUri}, apollo) {
-  const result = await apollo.mutate({
-    mutation: gql`
-    mutation loginWithLinkedIn($code: String! $redirectUri: String!) {
-      loginWithLinkedIn(code: $code redirectUri: $redirectUri) {
-        id
-        token
-        tokenExpires
+export default async function ({code, redirectUri}) {
+  let result
+  try {
+    result = await getClient().mutate({
+      mutation: gql`
+      mutation loginWithLinkedIn($code: String! $redirectUri: String!) {
+        loginWithLinkedIn(code: $code redirectUri: $redirectUri) {
+          id
+          token
+          tokenExpires
+        }
       }
-    }
-    `,
-    variables: { code, redirectUri }
-  })
+      `,
+      variables: { code, redirectUri }
+    })
+  } catch (err) {
+    return handleLoginCallback(err)
+  }
 
-  const {id, token, tokenExpires} = result.data.loginWithLinkedIn
-  await storeLoginToken(id, token, new Date(tokenExpires))
-  return id
+  return handleLoginCallback(null, result.data.loginWithLinkedIn)
 }
