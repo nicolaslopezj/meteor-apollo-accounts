@@ -68,7 +68,7 @@ Log the user in with a password.
 ```js
 import { loginWithPassword } from 'meteor-apollo-accounts'
 
-loginWithPassword({username, email, password, plainPassword}, apollo)
+loginWithPassword({username, email, password, plainPassword})
 ```
 
 - ```username```: Optional. The user's username.
@@ -88,7 +88,7 @@ Change the current user's password. Must be logged in.
 ```js
 import { changePassword } from 'meteor-apollo-accounts'
 
-changePassword({oldPassword, newPassword}, apollo)
+changePassword({oldPassword, newPassword})
 ```
 
 - ```oldPassword```: The user's current password. This is not sent in plain text over the wire.
@@ -116,7 +116,7 @@ Create a new user.
 ```js
 import { createUser } from 'meteor-apollo-accounts'
 
-createUser({username, email, password, profile}, apollo)
+createUser({username, email, password, profile})
 ```
 
 - ```username```: A unique name for this user.
@@ -136,7 +136,7 @@ Marks the user's email address as verified. Logs the user in afterwards.
 ```js
 import { verifyEmail } from 'meteor-apollo-accounts'
 
-verifyEmail({token}, apollo)
+verifyEmail({token})
 ```
 
 - ```token```: The token retrieved from the verification URL.
@@ -151,7 +151,7 @@ Request a forgot password email.
 ```js
 import { forgotPassword } from 'meteor-apollo-accounts'
 
-forgotPassword({email}, apollo)
+forgotPassword({email})
 ```
 
 - ```email```: The email address to send a password reset link.
@@ -165,7 +165,7 @@ Reset the password for a user using a token received in email. Logs the user in 
 ```js
 import { resetPassword } from 'meteor-apollo-accounts'
 
-resetPassword({newPassword, token}, apollo)
+resetPassword({newPassword, token})
 ```
 
 - ```newPassword```: A new password for the user. This is not sent in plain text over the wire.
@@ -182,7 +182,7 @@ Logins the user with a facebook accessToken
 ```js
 import { loginWithFacebook } from 'meteor-apollo-accounts'
 
-loginWithFacebook({accessToken}, apollo)
+loginWithFacebook({accessToken})
 ```
 
 - ```accessToken```: A Facebook accessToken. It's recommended to use
@@ -197,7 +197,7 @@ Logins the user with a google accessToken
 ```js
 import { loginWithGoogle } from 'meteor-apollo-accounts'
 
-loginWithGoogle({accessToken}, apollo)
+loginWithGoogle({accessToken})
 ```
 
 - ```accessToken```: A Google accessToken. It's recommended to use
