@@ -12,6 +12,7 @@ const initAccounts = function (givenOptions) {
     loginWithFacebook: false,
     loginWithGoogle: false,
     loginWithLinkedIn: false,
+    loginWithVK: false,
     loginWithPassword: true
   }
   const options = {

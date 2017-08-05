@@ -1,6 +1,7 @@
 import loginWithFacebook from './loginWithFacebook'
 import loginWithGoogle from './loginWithGoogle'
 import loginWithLinkedIn from './loginWithLinkedIn'
+import loginWithVK from './loginWithVK'
 import hasService from './hasService'
 import {Accounts} from 'meteor/accounts-base'
 
@@ -29,6 +30,15 @@ export default function (options) {
     oauth.loginWithLinkedIn = loginWithLinkedIn
     try {
       Accounts.oauth.registerService('linkedin')
+    } catch (error) {
+      // dont log this error
+    }
+  }
+
+  if (hasService(options, 'vk')) {
+    oauth.loginWithVK = loginWithVK
+    try {
+      Accounts.oauth.registerService('vk')
     } catch (error) {
       // dont log this error
     }

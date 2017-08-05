@@ -54,8 +54,16 @@ export default function (options) {
   if (hasService(options, 'linkedin')) {
     mutations.push(`
     type Mutation {
-      # Login the user with a facebook access token
+      # Login the user with a linkedin access token
       loginWithLinkedIn (code: String!, redirectUri: String!): LoginMethodResponse
+    }`)
+  }
+
+  if (hasService(options, 'vk')) {
+    mutations.push(`
+    type Mutation {
+      # Login the user with a vk access token
+      loginWithVK (code: String!, redirectUri: String!): LoginMethodResponse
     }`)
   }
 

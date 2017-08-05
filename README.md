@@ -29,6 +29,7 @@ initAccounts({
   loginWithFacebook: false,
   loginWithGoogle: false,
   loginWithLinkedIn: false,
+  loginWithVK: false,
   loginWithPassword: true
 })
 
@@ -205,6 +206,35 @@ https://github.com/anthonyjgrove/react-google-login to fetch the accessToken.
 
 - ```apollo```: Apollo client instance.
 
+#### loginWithLinkedIn
+
+Logins the user with a google accessToken
+
+```js
+import { loginWithLinkedIn } from 'meteor-apollo-accounts'
+
+loginWithLinkedIn({accessToken}, apollo)
+```
+
+- ```accessToken```: A LinkedIn accessToken. It's recommended to use
+https://github.com/orionsoft/react-linkedin-login to fetch the accessToken.
+
+- ```apollo```: Apollo client instance.
+
+#### loginWithVK
+
+Logins the user with a google accessToken
+
+```js
+import { loginWithVK } from 'meteor-apollo-accounts'
+
+loginWithVK({accessToken}, apollo)
+```
+
+- ```accessToken```: A VK accessToken. It's recommended to use
+https://github.com/appigram/react-vk-login to fetch the accessToken.
+
+- ```apollo```: Apollo client instance.
 
 #### onTokenChange
 

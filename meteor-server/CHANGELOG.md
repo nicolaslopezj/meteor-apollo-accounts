@@ -1,5 +1,9 @@
 # Changelog
 
+### v3.2.3
+
+- Login with VK.
+
 ### v3.1.0
 
 - Use http instead of meteor to make Facebook login.
