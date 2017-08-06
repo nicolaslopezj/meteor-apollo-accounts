@@ -15,8 +15,8 @@ const handleAuthFromAccessToken = function ({code, redirectUri}) {
   serviceData.id = serviceData.uid;
   delete serviceData.uid;
 
-  serviceData.expiresAt = (+new Date) + (1000 * serviceData.expiresIn);
-  delete serviceData.expiresIn;
+  serviceData.expiresAt = (+new Date) + (1000 * serviceData.expires_in);
+  delete serviceData.expires_in;
 
   return {
     serviceName: 'vk',
@@ -28,7 +28,7 @@ const handleAuthFromAccessToken = function ({code, redirectUri}) {
 const getTokens = function () {
   const result = ServiceConfiguration.configurations.findOne({service: 'vk'})
   return {
-    client_id: result.clientId,
+    client_id: result.appId,
     client_secret: result.secret
   }
 }
