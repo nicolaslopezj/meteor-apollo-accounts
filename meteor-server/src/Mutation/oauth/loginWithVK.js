@@ -4,19 +4,20 @@ import {ServiceConfiguration} from 'meteor/service-configuration'
 
 const handleAuthFromAccessToken = function ({code, redirectUri}) {
   // works with anything also...
-  const accessToken = getAccessToken(code, redirectUri)
-  const identity = getIdentity(accessToken)
-
+  const response = getAccessToken(code, redirectUri)
+  const accessToken = response.access_token
+  const email = response.email
+  const expiresAt = (+new Date) + (1000 * response.expires_in)
+  const identity = getIdentity(accessToken).data.response[0]
   const serviceData = {
     ...identity,
+    expiresAt,
+    email,
     accessToken
   }
 
   serviceData.id = serviceData.uid;
   delete serviceData.uid;
-
-  serviceData.expiresAt = (+new Date) + (1000 * serviceData.expires_in);
-  delete serviceData.expires_in;
 
   return {
     serviceName: 'vk',
@@ -42,7 +43,7 @@ const getAccessToken = function (code, redirectUri) {
     }
   }).content
 
-  return response.access_token
+  return JSON.parse(response)
 }
 
 const getIdentity = function (accessToken) {
