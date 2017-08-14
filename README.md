@@ -75,9 +75,7 @@ loginWithPassword({username, email, password, plainPassword}, apollo)
 
 - ```email```: Optional. The user's email.
 
-- ```password```: The hashed user's password.
-
-- ```plainPassword```: Optional. The plain user's password. Recommended only for use in testing tools, like GraphiQL.
+- ```password```: The user's password. The library will hash the string before it sends it to the server.
 
 - ```apollo```: Apollo client instance.
 
