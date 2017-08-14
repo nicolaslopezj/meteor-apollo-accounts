@@ -68,7 +68,7 @@ Log the user in with a password.
 ```js
 import { loginWithPassword } from 'meteor-apollo-accounts'
 
-loginWithPassword({username, email, password, plainPassword}, apollo)
+loginWithPassword({username, email, password}, apollo)
 ```
 
 - ```username```: Optional. The user's username.
