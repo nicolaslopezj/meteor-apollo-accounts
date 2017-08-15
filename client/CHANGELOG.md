@@ -1,5 +1,9 @@
 # Changelog
 
+### v2.0.2
+
+- Improve logout function.
+
 ### v2.0.0
 
 - React Native support.

@@ -1,6 +1,6 @@
 {
   "name": "meteor-apollo-accounts",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Meteor accounts in GraphQL",
   "main": "./client",
   "repository": {
@@ -15,13 +15,7 @@
     "test-watch": "jest --watch",
     "lint": "standard \"src/**/*.js\""
   },
-  "keywords": [
-    "meteor",
-    "apollo",
-    "graphql",
-    "accounts",
-    "react-native"
-  ],
+  "keywords": ["meteor", "apollo", "graphql", "accounts", "react-native"],
   "author": "nicolaslopezj",
   "license": "MIT",
   "devDependencies": {
@@ -41,10 +35,7 @@
     "graphql-tag": "^1.0.0"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/client/"
-    ]
+    "testPathIgnorePatterns": ["/node_modules/", "/client/"]
   },
   "dependencies": {
     "babel-eslint": "^7.0.0",
@@ -52,12 +43,6 @@
     "underscore": "^1.8.3"
   },
   "standard": {
-    "globals": [
-      "it",
-      "xit",
-      "expect",
-      "test",
-      "jest"
-    ]
+    "globals": ["it", "xit", "expect", "test", "jest"]
   }
 }
