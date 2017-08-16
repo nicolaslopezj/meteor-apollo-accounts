@@ -8,7 +8,7 @@ export default function (options) {
     type Mutation {
       # Log the user in with a password.
       loginWithPassword (username: String, email: String, password: HashedPassword, plainPassword: String): LoginMethodResponse
-
+      
       # Create a new user.
       createUser (username: String, email: String, password: HashedPassword, plainPassword: String, profile: CreateUserProfileInput): LoginMethodResponse
 
