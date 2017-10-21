@@ -22,7 +22,7 @@ const initAccounts = function (givenOptions) {
   const typeDefs = [SchemaTypes(options), ...SchemaMutations(options)]
   const resolvers = {...Mutation(options), ...LoginMethodResponse(options)}
 
-  loadSchema({typeDefs, resolvers})
+  return {typeDefs, resolvers}
 }
 
 export {
