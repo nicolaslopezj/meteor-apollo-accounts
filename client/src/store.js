@@ -37,7 +37,8 @@ export const getUserId = async function () {
 
 const tokenDidChange = async function () {
   const newData = await tokenStore.get()
-  for (const callback of onChangeCallbacks) {
+  for (let i = 0; i < onChangeCallbacks.length; i +=1) {
+    const callback = onChangeCallbacks[i];
     callback(newData)
   }
 }
