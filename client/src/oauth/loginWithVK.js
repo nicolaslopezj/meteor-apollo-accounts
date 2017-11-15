@@ -1,26 +1,34 @@
 import gql from 'graphql-tag'
-import { storeLoginToken } from '../store'
+import { handleLoginCallback, getClient, startLoggingIn, endLoggingIn } from '../store'
 
 /**
  * Pass the accessToken
- * It's recommended to use https://github.com/keppelen/react-facebook-login
+ * It's recommended to use https://github.com/appigram/react-vk-login
  */
 
-export default async function ({code, redirectUri}, apollo) {
-  const result = await apollo.mutate({
-    mutation: gql`
-    mutation loginWithVK($code: String! $redirectUri: String!) {
-      loginWithVK(code: $code redirectUri: $redirectUri) {
-        id
-        token
-        tokenExpires
+export default async function ({code, redirectUri}) {
+  startLoggingIn()
+  let result
+  try {
+    result = await getClient().mutate({
+      mutation: gql`
+      mutation loginWithVK($code: String! $redirectUri: String!) {
+        loginWithVK(code: $code redirectUri: $redirectUri) {
+          id
+          token
+          tokenExpires
+        }
       }
-    }
-    `,
-    variables: { code, redirectUri }
-  })
+      `,
+      variables: {
+        code, redirectUri
+      }
+    })
+  } catch (err) {
+    return handleLoginCallback(err)
+  } finally {
+    endLoggingIn()
+  }
 
-  const {id, token, tokenExpires} = result.data.loginWithVK
-  await storeLoginToken(id, token, new Date(tokenExpires))
-  return id
+  return handleLoginCallback(null, result.data.loginWithVK)
 }

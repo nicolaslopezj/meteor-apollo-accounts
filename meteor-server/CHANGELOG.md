@@ -1,5 +1,9 @@
 # Changelog
 
+### vNEXT
+
+- Added `loginWithToken` mutation
+
 ### v3.2.3
 
 - Login with VK.

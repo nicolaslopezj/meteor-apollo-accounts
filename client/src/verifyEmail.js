@@ -1,21 +1,24 @@
 import gql from 'graphql-tag'
-import {storeLoginToken} from './store'
+import {handleLoginCallback, getClient} from './store'
 
-export default async function ({token}, apollo) {
-  const result = await apollo.mutate({
-    mutation: gql`mutation verifyEmail($token: String!) {
-      verifyEmail(token: $token) {
-        id
+export default async function ({token}) {
+  let result
+  try {
+    result = await getClient().mutate({
+      mutation: gql`mutation verifyEmail($token: String!) {
+        verifyEmail(token: $token) {
+          id
+          token
+          tokenExpires
+        }
+      }`,
+      variables: {
         token
-        tokenExpires
       }
-    }`,
-    variables: {
-      token
-    }
-  })
+    })
+  } catch (err) {
+    return handleLoginCallback(err)
+  }
 
-  const {id, token: loginToken, tokenExpires} = result.data.verifyEmail
-  await storeLoginToken(id, loginToken, new Date(tokenExpires))
-  return id
+  return handleLoginCallback(null, result.data.verifyEmail)
 }
