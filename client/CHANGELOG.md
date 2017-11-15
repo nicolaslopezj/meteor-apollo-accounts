@@ -3,6 +3,10 @@
 ### v2.1.0
 - Bump dependencies
 
+### v2.0.2
+
+- Improve logout function.
+
 ### v2.0.0
 
 - React Native support.

@@ -69,16 +69,14 @@ Log the user in with a password.
 ```js
 import { loginWithPassword } from 'meteor-apollo-accounts'
 
-loginWithPassword({username, email, password, plainPassword}, apollo)
+loginWithPassword({username, email, password}, apollo)
 ```
 
 - ```username```: Optional. The user's username.
 
 - ```email```: Optional. The user's email.
 
-- ```password```: The hashed user's password.
-
-- ```plainPassword```: Optional. The plain user's password. Recommended only for use in testing tools, like GraphiQL.
+- ```password```: The user's password. The library will hash the string before it sends it to the server.
 
 - ```apollo```: Apollo client instance.
 
