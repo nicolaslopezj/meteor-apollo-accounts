@@ -1,5 +1,8 @@
 # Changelog
 
+### v2.1.0
+- Bump dependencies
+
 ### v2.0.0
 
 - React Native support.
