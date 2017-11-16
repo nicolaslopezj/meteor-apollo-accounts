@@ -47,7 +47,7 @@ const executableSchema = makeExecutableSchema(schema)
 May or may not be the same app.
 
 ```sh
-npm install meteor-apollo-accounts
+npm install meteor-react-apollo-accounts
 ```
 
 ### Examples
