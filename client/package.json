@@ -1,7 +1,7 @@
 {
-  "name": "meteor-apollo-accounts",
-  "version": "2.1.0",
-  "description": "Meteor accounts in GraphQL",
+  "name": "meteor-react-apollo-accounts",
+  "version": "2.1.2",
+  "description": "Meteor accounts in GraphQL (Updated)",
   "main": "./client",
   "repository": {
     "url": "https://github.com/appigram/meteor-apollo-accounts",
