@@ -8,6 +8,9 @@ export default function (options) {
     type Mutation {
       # Log the user in with a password.
       loginWithPassword (username: String, email: String, password: HashedPassword, plainPassword: String): LoginMethodResponse
+      
+      # Log the user in with a token
+      loginWithToken (token: String!): LoginMethodResponse
 
       # Create a new user.
       createUser (username: String, email: String, password: HashedPassword, plainPassword: String, profile: CreateUserProfileInput): LoginMethodResponse
@@ -54,8 +57,16 @@ export default function (options) {
   if (hasService(options, 'linkedin')) {
     mutations.push(`
     type Mutation {
-      # Login the user with a facebook access token
+      # Login the user with a linkedin access token
       loginWithLinkedIn (code: String!, redirectUri: String!): LoginMethodResponse
+    }`)
+  }
+
+  if (hasService(options, 'vk')) {
+    mutations.push(`
+    type Mutation {
+      # Login the user with a vk access token
+      loginWithVK (code: String!, redirectUri: String!): LoginMethodResponse
     }`)
   }
 

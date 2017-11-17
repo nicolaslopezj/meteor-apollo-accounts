@@ -1,13 +1,8 @@
-import {getLoginToken, resetStore} from './store'
 import gql from 'graphql-tag'
+import {getLoginToken, handleLogout, getClient} from './store'
 
-export default async function(apollo) {
-  const token = await getLoginToken()
-  await resetStore()
-
-  if (!token) return
-
-  apollo.mutate({
+export default async function () {
+  const result = await getClient().mutate({
     mutation: gql`
       mutation logout($token: String!) {
         logout(token: $token) {
@@ -16,7 +11,10 @@ export default async function(apollo) {
       }
     `,
     variables: {
-      token
+      token: getLoginToken()
     }
   })
+
+  await handleLogout()
+  return result.data.logout.success
 }

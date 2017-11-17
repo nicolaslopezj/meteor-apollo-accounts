@@ -1,4 +1,5 @@
 import loginWithPassword from './loginWithPassword'
+import loginWithToken from './loginWithToken'
 import logout from './logout'
 import changePassword from './changePassword'
 import createUser from './createUser'
@@ -17,8 +18,9 @@ export default function (options) {
     ...oauth(options)
   }
 
-  if (hasService(options, 'password')) {
+  if (hasService('password')) {
     resolvers.loginWithPassword = loginWithPassword
+    resolvers.loginWithToken = loginWithToken
     resolvers.changePassword = changePassword
     resolvers.createUser = createUser
     resolvers.forgotPassword = forgotPassword

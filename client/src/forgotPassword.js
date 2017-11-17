@@ -1,7 +1,8 @@
 import gql from 'graphql-tag'
+import {getClient} from './store'
 
-export default async function ({email}, apollo) {
-  const result = await apollo.mutate({
+export default async function ({email}) {
+  const result = await getClient().mutate({
     mutation: gql`mutation forgotPassword($email: String!) {
       forgotPassword(email: $email) {
         success
