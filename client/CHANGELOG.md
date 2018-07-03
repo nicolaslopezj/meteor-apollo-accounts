@@ -1,5 +1,11 @@
 # Changelog
 
+### v2.1.0
+
+- Update to babel 7
+- Use cookies instead of localstorage for SSR
+- Update dependencies
+
 ### v2.0.2
 
 - Improve logout function.

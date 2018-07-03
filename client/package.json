@@ -4,7 +4,7 @@
   "description": "Meteor accounts SSR in GraphQL",
   "main": "./client",
   "repository": {
-    "url": "https://github.com/nicolaslopezj/meteor-apollo-accounts",
+    "url": "https://github.com/nicolaslopezj/meteor-apollo-accounts-ssr",
     "type": "git"
   },
   "scripts": {
@@ -26,8 +26,11 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
+    "@babel/core": "^7.0.0-beta.51",
     "@babel/plugin-proposal-decorators": "^7.0.0-beta.51",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.5",
     "babel-jest": "^23.2.0",
     "eslint": ">=3.0.0",
@@ -41,12 +44,12 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/client/"
+      "/client/client/"
     ]
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.51",
-    "@babel/preset-env": "^7.0.0-beta.51",
+    "@babel/runtime": "^7.0.0-beta.51",
+    "graphql": "^0.13.2",
     "uglify-js": "^3.4.3",
     "underscore": "^1.9.1"
   },
