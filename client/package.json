@@ -1,7 +1,7 @@
 {
-  "name": "meteor-apollo-accounts",
-  "version": "2.0.2",
-  "description": "Meteor accounts in GraphQL",
+  "name": "meteor-apollo-accounts-ssr",
+  "version": "2.1.0",
+  "description": "Meteor accounts SSR in GraphQL",
   "main": "./client",
   "repository": {
     "url": "https://github.com/nicolaslopezj/meteor-apollo-accounts",
@@ -15,34 +15,48 @@
     "test-watch": "jest --watch",
     "lint": "standard \"src/**/*.js\""
   },
-  "keywords": ["meteor", "apollo", "graphql", "accounts", "react-native"],
-  "author": "nicolaslopezj",
+  "keywords": [
+    "meteor",
+    "apollo",
+    "graphql",
+    "accounts",
+    "react-native"
+  ],
+  "author": "abathellier",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "6.5.1",
-    "babel-eslint": "^7.0.0",
-    "babel-jest": "^15.0.0",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-es2015": "6.5.0",
-    "babel-preset-stage-2": "^6.5.0",
+    "@babel/cli": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-decorators": "^7.0.0-beta.51",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.51",
+    "babel-eslint": "^8.2.5",
+    "babel-jest": "^23.2.0",
     "eslint": ">=3.0.0",
-    "graphql-tag": "^1.0.0",
-    "jest-cli": "^15.1.1",
+    "graphql-tag": "^2.9.2",
+    "jest-cli": "^23.2.0",
     "standard": "*"
   },
   "peerDependencies": {
-    "graphql-tag": "^1.0.0"
+    "graphql-tag": "^2.0.0"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/", "/client/"]
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/client/"
+    ]
   },
   "dependencies": {
-    "babel-eslint": "^7.0.0",
-    "uglify-js": "^2.7.3",
-    "underscore": "^1.8.3"
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "uglify-js": "^3.4.3",
+    "underscore": "^1.9.1"
   },
   "standard": {
-    "globals": ["it", "xit", "expect", "test", "jest"]
+    "globals": [
+      "it",
+      "xit",
+      "expect",
+      "test",
+      "jest"
+    ]
   }
 }
